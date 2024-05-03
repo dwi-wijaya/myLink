@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-color: rgb(94, 92, 127);
+  --background-color: 248, 247, 253;
+  --container-color: 255, 255, 255;
+  --primary-color: rgb(255, 107, 77);
+  --primary-bg: #ff985c4d;
+  --title-color: rgb(53, 50, 82);
+  --text-color: rgb(94, 92, 127);
+  --text-secondary: rgb(133, 131, 165);
+  --stroke-color: #e7e7e7;
+  --dots: url('../assets/dots-light.svg');
+}
+
+.dark {
+  --foreground-color: rgb(159, 159, 159);
+  --background-color: 34, 40, 49;
+  --container-color: 49, 54, 63;
+  --primary-color: rgb(255, 159, 140);
+  --title-color: rgb(228, 230, 235);
+  --text-color: rgb(163, 163, 163);
+  --text-secondary: rgb(150, 150, 150);
+  --stroke-color: rgb(62, 68, 78);
+  --dots: url('../assets/dots-dark.svg');
+
+}
+
+body {
+  color: var(--foreground-color);
+  background: rgb(var(--background-color));
+}
+
+html {
+  scroll-behavior: smooth;
+  letter-spacing: .3px;
+}
+
+@layer utilities {
+  .toggle {
+    @apply top-5 rounded-lg fixed cursor-pointer h-10 w-fit px-3 bg-container text-text border border-stroke flex justify-center items-center z-10 transition-all duration-300 ease-in-out;
+  }
+
+  .transition-3s {
+    @apply transition-all duration-300 ease-in-out
+  }
+
+  .card {
+    @apply px-4 py-3 rounded-xl bg-container border border-stroke transition-3s
+  }
+
+  .btn {
+    @apply px-3 py-2 leading-4 justify-center rounded-md shadow-sm bg-[#ff985c4d] border border-[#ffa04666] text-primary flex gap-1 items-center font-normal text-sm w-fit hover:border-primary transition-3s
+  }
+
+  .hr {
+    @apply border-stroke my-5;
+  }
+
+  .badge {
+    @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
+  }
+  .form-input{
+    @apply w-full rounded-md bg-container border-stroke
+  }
+
+}
