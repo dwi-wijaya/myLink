@@ -32,6 +32,9 @@ export const Authentication = () => {
 export const SignIn = async (email, password) => {
   await signInWithEmailAndPassword(FirebaseAuth, email, password)
 }
+export const CreateUser = async (email, password) => {
+  await createUserWithEmailAndPassword(FirebaseAuth, email, password)
+}
 
 export const GoogleSignIn = async () => {
   const provider = new GoogleAuthProvider();
