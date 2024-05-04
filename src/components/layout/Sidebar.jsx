@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import LogoDark from '@/assets/logo-dark.webp';
-import LogoLight from '@/assets/logo-light.webp';
 import 'simple-line-icons'
 import { MENU_ITEMS } from '@/constants/data/menu';
 import Image from 'next/image';
@@ -10,11 +8,10 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { usePathname } from 'next/navigation';
 import { useUser } from '@/context/user';
+import Logo from '@/assets/logos/google.svg'
 
 const Sidebar = () => {
-    const [mounted, setMounted] = useState(false)
     const [toggle, setToggle] = useState(false);
-    const { theme } = useTheme();
     const sidebarRef = useRef(null);
     const pathname = usePathname()
     const router = useRouter();
@@ -37,19 +34,11 @@ const Sidebar = () => {
         };
     }, [toggle]);
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
-
-    if (!mounted) {
-        return null
-    }
-
     return uuid &&  (
         <>
             <aside ref={sidebarRef} className={`${toggle && '!left-0'} fixed -left-[80px] lg:left-0 top-0 bg-container border-r border-stroke p-6 w-20 min-h-screen flex flex-col justify-between text-center transition-3s z-[9]`}>
                 <Link aria-label='go home' href="/" className="nav__logo">
-                    <Image src={theme == 'dark' ? LogoDark : LogoLight} alt="Dwi-logo" />
+                    <Image src={Logo} alt="Dwi-logo" />
                 </Link>
                 <nav className="nav">
                     <div className="nav__menu">
