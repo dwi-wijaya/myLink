@@ -11,7 +11,7 @@
   --title-color: rgb(53, 50, 82);
   --text-color: rgb(94, 92, 127);
   --text-secondary: rgb(133, 131, 165);
-  --stroke-color: #e7e7e7;
+  --stroke-color: #d7d7d7;
   --dots: url('../assets/dots-light.svg');
 }
 
@@ -23,7 +23,7 @@
   --title-color: rgb(228, 230, 235);
   --text-color: rgb(163, 163, 163);
   --text-secondary: rgb(150, 150, 150);
-  --stroke-color: rgb(62, 68, 78);
+  --stroke-color: rgb(70, 75, 85);
   --dots: url('../assets/dots-dark.svg');
 
 }
@@ -66,4 +66,7 @@ html {
     @apply w-full rounded-md bg-container border-stroke
   }
 
+}
+.phone{
+  aspect-ratio: 9/18;
 }
