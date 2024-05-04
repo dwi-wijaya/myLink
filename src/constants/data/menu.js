@@ -4,5 +4,10 @@ export const MENU_ITEMS = [
         iconClass: "bx bx-home-alt",
         label: "Home",
     },
+    {
+        href: "/admin/appearance",
+        iconClass: "bx bx-palette",
+        label: "Appearance",
+    },
     
 ];
