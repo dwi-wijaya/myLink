@@ -3,10 +3,12 @@ import ErrorInput from '../common/ErrorInput';
 import { GoogleSignIn, SignIn } from '@/services/firebase/config';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { Input } from 'antd';
+import { Divider, Input } from 'antd';
 import Link from 'next/link';
+import Image from 'next/image';
+import GoogleLogo from '@/assets/logos/google.svg'
 
-const LoginForm = () => {
+const SigninForm = () => {
     const {
         register,
         handleSubmit,
@@ -35,7 +37,6 @@ const LoginForm = () => {
 
     // create user for using google
     const handleGoogle = async () => {
-        console.log('a');
         try {
             setGoogleLoading(true);
             await GoogleSignIn()
@@ -67,18 +68,17 @@ const LoginForm = () => {
                             <ErrorInput error={errors.password} />
 
                         </div>
-                        <div className="flex gap-2 my-5">
 
-                            <button className="btn !bg-white !w-full" onClick={handleGoogle}>
-                                {Loading && <i className="bx bx-loader bx-spin"></i>}
-                                {Loading ? "Signing  ..." : "Signin with Google"}
-                            </button>
-                            <button className="btn !w-full mb-3" type="submit">
+                            <button className="btn !w-full mt-5" type="submit">
                                 {Loading && <i className="bx bx-loader bx-spin"></i>}
                                 {Loading ? "Signing  ..." : "Sign in"}
                             </button>
-                        </div>
-                        <small className='text-subtext'>Dont Have Account yet? <Link href="/sign-up"><b>Sign-up</b></Link></small> 
+                        <p className='text-sm text-subtext my-4'>Dont Have Account yet? <Link href="/signup"><b>Sign-up</b></Link></p> 
+                        {/* <Divider plain>OR</Divider> */}
+                            <button className="btn !bg-white !w-full !text-base" onClick={handleGoogle}>
+                                {GoogleLoading && <i className="bx bx-loader bx-spin"></i>}
+                                {GoogleLoading ? "Signing  ..." : <div className='flex gap-3 items-center'><Image className='size-4' src={GoogleLogo}></Image>Continue with Google</div>}
+                            </button>
                     </form>
                     <hr className="hr" />
                     <p className="text-center text-gray-500 text-xs">
@@ -90,4 +90,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm
+export default SigninForm

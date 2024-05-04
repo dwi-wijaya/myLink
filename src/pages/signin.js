@@ -1,10 +1,10 @@
-import LoginForm from "@/components/form/LoginForm"
+import SigninForm from "@/components/form/SigninForm"
 import WithUnprotected from "@/hoc/withUnprotected"
 
 const SignIn = () => {
     return (
         <main>
-            <LoginForm />
+            <SigninForm />
         </main>
     )
 }
