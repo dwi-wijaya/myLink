@@ -69,7 +69,7 @@ const LinkForm = ({ links, setLinks }) => {
             <div className='flex flex-col gap-y-2'>
                 <SortableContext items={links} strategy={verticalListSortingStrategy}>
                     {links.map((link, index) => (
-                        <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete}  key={link.id} />
+                        <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
                     ))}
                 </SortableContext>
             </div>
