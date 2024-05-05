@@ -64,7 +64,7 @@ const LinkComponent = ({ id, title, url, order, handleDelete, setLinks, links })
                     <div className="flex flex-col">
 
                         <p className="flex items-center gap-3 mb-0">
-                            {onUpdate && <input ref={inputRef} id={id} name='title' onChange={handleChange} type="text" className='w-fit focus:!outline-transparent p-0 outline-offset-2 !outline-transparent border-none' value={linkTitle} />}
+                            {onUpdate && <input ref={inputRef} id={id} name='title' onChange={handleChange} type="text" className='w-fit p-0 outline-offset-2 outline-transparent border-none box-shadow-none' value={linkTitle} />}
                             {!onUpdate && <p>{linkTitle}</p>}
                             {!onUpdate && <i onClick={() => setOnupdate(true)} className="bx bx-pencil"></i>}
                         </p>
