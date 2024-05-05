@@ -4,7 +4,10 @@ import Image from 'next/image';
 import Preview from './Preview';
 
 const AppearanceSetting = () => {
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState({
+        avatar: '',
+        cover: '',  
+    });
     const [profile, setProfile] = useState({
         title: '',
         bio: ''
@@ -16,7 +19,7 @@ const AppearanceSetting = () => {
                 <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
             </div>
             <div className="w-full">
-                <Preview image={image} profile={profile}/>
+                <Preview image={image} profile={profile} />
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import { ColorPicker } from 'antd';
+import { FileInput } from 'flowbite-react';
 import { useState } from 'react';
 
 const ProfileForm = ({ image, setImage, profile, setProfile }) => {
@@ -13,17 +14,27 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
+        const type = e.target.name
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImage(reader.result);
+                setImage(prevState => ({
+                    ...prevState,
+                    [type]: reader.result
+                }));
+                // setImage({ avatar: reader.result });
             };
             reader.readAsDataURL(file);
         }
+        console.log(image);
     };
 
-    const handleReset = () => {
-        setImage(null);
+    const handleReset = (type) => {
+        setImage(prevState => ({
+            ...prevState,
+            [type]: ''
+        }));
+        console.log(image);
     };
 
     return (
@@ -31,9 +42,9 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
             <div className="flex justify-between gap-3 items-center space-x-4">
                 {/* Circle Image */}
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border border-stroke">
-                    {image ? (
+                    {image.avatar ? (
                         <img
-                            src={image}
+                            src={image.avatar}
                             alt="Avatar Preview"
                             className="object-cover w-full h-full"
                         />
@@ -58,6 +69,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                     <input
                         type="file"
                         accept="image/*"
+                        name='avatar'
                         onChange={handleImageChange}
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                     />
@@ -76,12 +88,13 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                                 accept="image/*"
                                 onChange={handleImageChange}
                                 id="avatar"
+                                name='avatar'
                                 className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                             />
                         </label>
                         <button
-                            onClick={handleReset}
-                            className="px-4 py-2 bg-container text-text rounded-lg border border-stroke"
+                            onClick={() => handleReset('avatar')}
+                            className={`px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext'}`}
                             disabled={!image}
                         >
                             Remove
@@ -91,8 +104,34 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
             </div>
             <hr className="hr" />
-            <div className="flex gap-3 relative">
-            <input name="title" value={profile.title} onChange={handleChange} type="text" className="form-input mb-3" placeholder='Profile Title' />
+            <div className="flex flex-col">
+                <div className="flex w-full gap-2 justify-between mb-3">
+                    <label
+                        htmlFor="avatar"
+                        className="w-full relative px-4 py-2 bg-slate-500 text-white rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
+                    >
+                        <i class='bx bxs-image'></i> Pick your own cover
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            id="cover"
+                            name='cover'
+                            className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                        />
+                    </label>
+
+                    <button
+                        onClick={() => handleReset('cover')}
+                        className={`w-1/4 px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext'}`}
+                        disabled={!image}
+                    >
+                        Remove
+                    </button>
+                </div>
+                <div className="flex gap-3 relative">
+                    <input name="title" value={profile.title} onChange={handleChange} type="text" className="form-input mb-3" placeholder='Profile Title' />
+                </div>
             </div>
             <textarea name="bio" value={profile.bio} onChange={handleChange} id="" cols="30" rows="3" className='form-input' placeholder='Bio'></textarea>
         </>
