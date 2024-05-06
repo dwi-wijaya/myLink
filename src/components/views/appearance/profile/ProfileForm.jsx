@@ -110,7 +110,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                         htmlFor="avatar"
                         className="w-full relative px-4 py-2 bg-slate-500 text-white rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
                     >
-                        <i class='bx bxs-image'></i> Pick your own cover
+                        <i className='bx bxs-image'></i> Pick your own cover
                         <input
                             type="file"
                             accept="image/*"
