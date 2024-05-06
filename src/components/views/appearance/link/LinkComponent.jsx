@@ -85,6 +85,7 @@ const LinkComponent = ({
                                     ref={inputRef}
                                     id={id}
                                     name="title"
+                                    autoFocus={true}
                                     onChange={handleChange}
                                     type="text"
                                     className="w-fit bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none"
@@ -109,6 +110,7 @@ const LinkComponent = ({
                                     name="url"
                                     onChange={handleChange}
                                     type="text"
+                                    autoFocus={true}
                                     className="w-fit.url bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none"
                                     value={linkValue.url}
                                 />
