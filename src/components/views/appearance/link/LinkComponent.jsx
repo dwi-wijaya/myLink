@@ -79,7 +79,7 @@ const LinkComponent = ({
                         <i className="bx bx-grid-alt"></i>
                     </button>
                     <div className="flex flex-col">
-                        <p className="flex items-center gap-3 mb-0">
+                        <div className="flex items-center gap-3 mb-0">
                             {onUpdate.title && (
                                 <input
                                     ref={inputRef}
@@ -99,9 +99,9 @@ const LinkComponent = ({
                                     className="bx bx-pencil"
                                 ></i>
                             )}
-                        </p>
+                        </div>
 
-                        <p className="flex items-center gap-3 mb-0">
+                        <div className="flex items-center gap-3 mb-0">
 
                             {onUpdate.url && (
                                 <input
@@ -119,7 +119,7 @@ const LinkComponent = ({
                             {!onUpdate.url && (
                                 <i onClick={() => setOnupdate({ url: true })} className="bx bx-pencil"></i>
                             )}
-                        </p>
+                        </div>
                     </div>
                 </div>
                 <div className="action-column flex flex- gap-1">
