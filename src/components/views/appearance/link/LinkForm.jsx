@@ -2,6 +2,7 @@ import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, closestCorners,
 import { SortableContext, arrayMove, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import React, { useState } from 'react'
 import LinkComponent from './LinkComponent';
+import { motion, Variants } from "framer-motion";
 
 const LinkForm = ({ links, setLinks }) => {
 
@@ -50,11 +51,41 @@ const LinkForm = ({ links, setLinks }) => {
 
     return (
         <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-            <div className={`link-form ${showForm ? 'link-form-visible' : 'link-form-hidden'}`}>
-                {!showForm && <button onClick={() => setShowform(!showForm)} className='btn mb-4'>Add link <i className="bx bx-link"></i></button>}
-                {showForm && <div className="card mb-4">
+            <motion.div
+                initial={false}
+                animate={showForm ? "open" : "closed"}
+                className={`link-form ${showForm ? 'link-form-visible' : 'link-form-hidden'}`}
+            >
+                <motion.button whileTap={{ scale: 0.90, transition: { duration: 0.1 } }} onClick={() => setShowform(!showForm)} className='btn mb-4 !w-full'>Add link <i className="bx bx-link"></i></motion.button>
+                <motion.div
+                    variants={{
+                        open: {
+                            clipPath: "inset(0% 0% 0% 0% round 10px)",
+                            display: "block",
+                            transition: {
+                                type: "spring",
+                                bounce: 0,
+                                duration: 0.2,
+                                delayChildren: 0.1,
+                                staggerChildren: 0.05
+                            }
+                        },
+                        closed: {
+                            clipPath: "inset(10% 50% 90% 50% round 10px)",
+                            transitionEnd: {
+                                display: "none"
+                            },
+                            transition: {
+                                type: "spring",
+                                bounce: 0,
+                                duration: 0.2
+                            },
+                        }
+                    }}
+                    style={{ pointerEvents: showForm ? "auto" : "none" }}
+                    className="card mb-4">
                     <div className="w-full mb-4">
-                        <div onClick={() => setShowform(false)} className="float-right bx bx-x cursor-pointer"></div>
+                        <div onClick={() => setShowform(!showForm)} className="float-right bx bx-x cursor-pointer"></div>
                     </div>
                     <h4 className='mb-2 font-semibold'>Add your link</h4>
                     <div className="flex gap-2">
@@ -64,15 +95,15 @@ const LinkForm = ({ links, setLinks }) => {
                             <button type='submit' className='btn float-right'>Add <i className="bx bx-list-plus"></i></button>
                         </form>
                     </div>
-                </div>}
-            </div>
-            <div className='flex flex-col gap-y-2'>
+                </motion.div>
+            </motion.div>
+            <motion.div className='flex flex-col gap-y-2'>
                 <SortableContext items={links} strategy={verticalListSortingStrategy}>
                     {links.map((link, index) => (
                         <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
                     ))}
                 </SortableContext>
-            </div>
+            </motion.div>
         </DndContext>
     );
 

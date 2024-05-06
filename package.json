@@ -17,6 +17,7 @@
     "axios": "^1.6.7",
     "firebase": "^9.6.2",
     "flowbite-react": "^0.7.8",
+    "framer-motion": "^11.1.7",
     "next": "14.1.4",
     "next-seo": "^6.4.0",
     "next-themes": "^0.2.1",
