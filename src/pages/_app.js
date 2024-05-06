@@ -37,7 +37,6 @@ export default function App({ Component, pageProps }) {
             position="top-right"
           />
 
-          <Sidebar />
           <main className={`${outfit.className} group/main lg:ml-[80px]  ml-0`}>
             <Overlay />
             <Component {...pageProps} />
