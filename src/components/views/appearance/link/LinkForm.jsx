@@ -98,11 +98,11 @@ const LinkForm = ({ links, setLinks }) => {
                 </motion.div>
             </motion.div>
             <motion.div className='flex flex-col gap-y-2'>
-                <SortableContext items={links} strategy={verticalListSortingStrategy}>
+                {links.length != 0 ? <SortableContext items={links} strategy={verticalListSortingStrategy}>
                     {links.map((link, index) => (
                         <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
                     ))}
-                </SortableContext>
+                </SortableContext> : <h3 className='font-semibold text-center'>Oops! Looks like there are no links here</h3>}
             </motion.div>
         </DndContext>
     );
