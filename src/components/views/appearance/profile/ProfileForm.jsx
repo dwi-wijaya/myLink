@@ -80,9 +80,9 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                     <div className="flex flex-col">
                         <label
                             htmlFor="avatar"
-                            className="relative px-4 py-2 mb-2 bg-slate-500 text-white rounded-lg cursor-pointer text-center"
+                            className="relative px-4 py-2 mb-2 btn  rounded-lg cursor-pointer text-center"
                         >
-                            Pick your own avatar
+                            <i className='bx bxs-user-circle'></i> Pick your own avatar
                             <input
                                 type="file"
                                 accept="image/*"
@@ -108,7 +108,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                 <div className="flex w-full gap-2 justify-between mb-3">
                     <label
                         htmlFor="avatar"
-                        className="w-full relative px-4 py-2 bg-slate-500 text-white rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
+                        className="w-full relative px-4 py-2 btn rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
                     >
                         <i className='bx bxs-image'></i> Pick your own cover
                         <input

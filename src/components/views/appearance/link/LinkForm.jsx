@@ -62,7 +62,11 @@ const LinkForm = ({ links, setLinks }) => {
                         initial={{ opacity: 0, }}
                         animate={{ opacity: 1, }}
                         exit={{ opacity: 0, scale: 0 }}
-                        whileTap={{ scale: 0.90, transition: { duration: 0.1 } }} onClick={() => setShowform(!showForm)} className='btn mb-4 !w-full'>Add link <i className="bx bx-link"></i></motion.button>}
+                        whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
+                        onClick={() => setShowform(!showForm)} className='btn mb-4 !w-full'
+                    >
+                        <i className="bx bx-link"></i> Add link
+                    </motion.button>}
 
                     <motion.div
                         variants={{
