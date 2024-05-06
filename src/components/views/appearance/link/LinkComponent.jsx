@@ -75,7 +75,7 @@ const LinkComponent = ({
         >
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                    <button className="btn !bg-slate-50 dark:hover:!bg-slate-600 hover:!bg-slate-100 !border-stroke !p-2 !text-slate-400 hover:!text-slate-500" {...listeners}>
+                    <button className="btn !bg-slate-50 dark:!bg-gray-700 hover:!bg-slate-100 !border-stroke !p-2 !text-slate-400 dark:hover:!text-slate-300 hover:!text-slate-500" {...listeners}>
                         <i className="bx bx-grid-vertical text-xl"></i>
                     </button>
                     <div className="flex flex-col">
