@@ -94,8 +94,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                         </label>
                         <button
                             onClick={() => handleReset('avatar')}
-                            className={`px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext'}`}
-                            disabled={!image}
+                            className={`px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                            disabled={!image.avatar}
                         >
                             Remove
                         </button>
@@ -123,8 +123,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
                     <button
                         onClick={() => handleReset('cover')}
-                        className={`w-1/4 px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext'}`}
-                        disabled={!image}
+                        className={`w-1/4 px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                        disabled={!image.cover}
                     >
                         Remove
                     </button>
