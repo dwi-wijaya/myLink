@@ -26,6 +26,7 @@ const AppearanceSetting = () => {
                 <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
                 <hr className="hr" />
                 <LinkForm links={links} setLinks={setLinks} />
+                <button className='btn mt-6'><i className="bx bx-check-circle"></i>Save</button>
             </div>
             <div className="w-full">
                 <Preview image={image} profile={profile} links={links} />
