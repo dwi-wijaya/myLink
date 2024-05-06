@@ -6,11 +6,11 @@ const Preview = ({ image, profile, links }) => {
         <div className="flex align-middle justify-center">
             <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide">
                 <div className="relative h-full">
-                    <div className={`relative w-full h-40 bg-[#e6e6e6] dark:bg-background rounded-t-2xl `}>
+                    <div className={`relative w-full h-40 bg-[#e6e6e6] dark:bg-background rounded-t-[1.5rem] `}>
                         {image.cover && <img
                             src={image.cover}
                             alt="Avatar Preview"
-                            className="object-cover w-full h-full rounded-t-2xl"
+                            className="object-cover w-full h-full"
                         />}
                     </div>
                     <div className="absolute top-[8%] content mt-10 p-5 w-full">
