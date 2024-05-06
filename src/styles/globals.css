@@ -68,8 +68,14 @@ html {
   .box-shadow-none{
     box-shadow: none !important;
   }
+  .scrollbar-thin{
+    scrollbar-width: thin;
+  }
 
 }
 .phone{
   aspect-ratio: 9/18;
+}
+*{
+  scroll-behavior: smooth;
 }

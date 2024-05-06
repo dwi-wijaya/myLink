@@ -22,7 +22,7 @@ const AppearanceSetting = () => {
 
     return (
         <div className='flex flex-col-reverse sm:flex-row justify-between gap-y-8'>
-            <div className="appearance-setting w-full">
+            <div className="appearance-setting w-full overflow-y-auto scrollbar-thin pr-4 max-h-[80vh]">
                 <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
                 <hr className="hr" />
                 <LinkForm links={links} setLinks={setLinks} />
