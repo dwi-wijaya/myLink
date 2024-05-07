@@ -48,7 +48,7 @@ html {
   }
 
   .card {
-    @apply p-3 rounded-xl bg-container border border-stroke transition-3s
+    @apply p-3 rounded-md bg-container border border-stroke transition-3s
   }
 
   .btn {
