@@ -103,7 +103,7 @@ const LinkForm = ({ links, setLinks }) => {
                             <form onSubmit={addLink}>
                                 <input type="text" required name="title" className="form-input mb-2" placeholder="Title" />
                                 <input type="url" required name="url" className="form-input mb-2" placeholder="URL" />
-                                <button type='submit' className='btn float-right'>Add <i className="bx bx-list-plus"></i></button>
+                                <button type='submit' className='btn float-right mt-2'>Add <i className="bx bx-list-plus"></i></button>
                             </form>
                         </div>
                     </motion.div>
