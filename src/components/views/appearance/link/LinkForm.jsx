@@ -63,7 +63,7 @@ const LinkForm = ({ links, setLinks }) => {
                         animate={{ opacity: 1, }}
                         exit={{ opacity: 0, scale: 0 }}
                         whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
-                        onClick={() => setShowform(!showForm)} className='btn mb-4 !w-full'
+                        onClick={() => setShowform(!showForm)} className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full'
                     >
                         <i className="bx bx-link"></i> Add link
                     </motion.button>}
@@ -71,7 +71,7 @@ const LinkForm = ({ links, setLinks }) => {
                     <motion.div
                         variants={{
                             open: {
-                                clipPath: "inset(0% 0% 0% 0% round 10px)",
+                                clipPath: "inset(0% 0% 0% 0% round 6px)",
                                 display: "block",
                                 transition: {
                                     type: "spring",
@@ -82,7 +82,7 @@ const LinkForm = ({ links, setLinks }) => {
                                 }
                             },
                             closed: {
-                                clipPath: "inset(10% 50% 90% 50% round 10px)",
+                                clipPath: "inset(10% 50% 90% 50% round 6px)",
                                 transitionEnd: {
                                     display: "none"
                                 },
@@ -95,15 +95,15 @@ const LinkForm = ({ links, setLinks }) => {
                         }}
                         style={{ pointerEvents: showForm ? "auto" : "none" }}
                         className="card mb-4">
-                        <div className="w-full mb-4 text-xl">
-                            <div onClick={() => setShowform(!showForm)} className="hover:bg-slate-300 rounded-full p-1 transition-3s float-right bx bx-x cursor-pointer"></div>
+                        <div className="w-full mb-4 flex justify-between items-center">
+                            <h5 className='font-semibold ml-1'>Add your link</h5>
+                            <div onClick={() => setShowform(!showForm)} className="text-xl bg-slate-50 hover:bg-slate-600 hover:text-slate-300 rounded-full py-1 px-2 transition-3s float-right bx bx-x cursor-pointer "></div>
                         </div>
-                        <h4 className='mb-2 font-semibold'>Add your link</h4>
                         <div className="flex gap-2">
                             <form onSubmit={addLink}>
                                 <input type="text" required name="title" className="form-input mb-2" placeholder="Title" />
                                 <input type="url" required name="url" className="form-input mb-2" placeholder="URL" />
-                                <button type='submit' className='btn float-right mt-2'>Add <i className="bx bx-list-plus"></i></button>
+                                <button type='submit' className='btn float-right mt-2'><i className="bx bx-link"></i> Add link</button>
                             </form>
                         </div>
                     </motion.div>
