@@ -3,6 +3,7 @@ import ProfileForm from './profile/ProfileForm'
 import Image from 'next/image';
 import Preview from './Preview';
 import LinkForm from './link/LinkForm';
+import { Divider } from 'antd';
 
 const AppearanceSetting = () => {
     const [image, setImage] = useState({
@@ -22,13 +23,13 @@ const AppearanceSetting = () => {
 
     return (
         <div className='flex flex-col-reverse sm:flex-row justify-between gap-y-8'>
-            <div className="appearance-setting w-full">
+            <div className="appearance-setting w-full overflow-x-hidden max-h-[100vh] p-2 scrollbar-hide ">
                 <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
                 <hr className="hr" />
                 <LinkForm links={links} setLinks={setLinks} />
-                <button className='btn mt-6'><i className="bx bx-check-circle"></i>Save</button>
+                <button className='btn mt-6 mb-24'><i className="bx bx-check-circle"></i>Save</button>
             </div>
-            <div className="w-full">
+            <div className="w-full flex justify-center items-center">
                 <Preview image={image} profile={profile} links={links} />
             </div>
         </div>
