@@ -119,11 +119,11 @@ const LinkComponent = ({
                                                 onChange={handleChange}
                                                 type="text"
                                                 autoFocus={true}
-                                                className="w-full url bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none"
+                                                className="w-full url bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none text-primary"
                                                 value={linkValue.url}
                                             />
                                         )}
-                                        {!onUpdate.url && <p className="text-ellipsis overflow-hidden whitespace-nowrap">{linkValue.url}</p>}
+                                        {!onUpdate.url && <p className="text-ellipsis overflow-hidden whitespace-nowrap text-primary">{linkValue.url}</p>}
                                         {!onUpdate.url && (
                                             <i onClick={() => setOnupdate({ url: true })} className="bx bx-pencil"></i>
                                         )}
