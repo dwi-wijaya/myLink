@@ -97,7 +97,7 @@ const LinkForm = ({ links, setLinks }) => {
                         className="card mb-4">
                         <div className="w-full mb-4 flex justify-between items-center">
                             <h5 className='font-semibold ml-1'>Add your link</h5>
-                            <div onClick={() => setShowform(!showForm)} className="text-xl bg-slate-50 hover:bg-slate-600 hover:text-slate-300 rounded-full py-1 px-2 transition-3s float-right bx bx-x cursor-pointer "></div>
+                            <div onClick={() => setShowform(!showForm)} className="text-xl bg-slate-50   dark:bg-gray-700 hover:bg-slate-800 dark:hover:bg-slate-200 hover:text-slate-300 dark:hover:text-slate-800 rounded-full py-1 px-2 transition-3s float-right bx bx-x cursor-pointer "></div>
                         </div>
                         <div className="flex gap-2">
                             <form onSubmit={addLink}>
