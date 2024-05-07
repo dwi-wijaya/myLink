@@ -71,7 +71,9 @@ html {
   .scrollbar-thin{
     scrollbar-width: thin;
   }
-
+  .grid-tc-minmax-90 {
+    grid-template-columns: minmax(0, 95%);
+  }
 }
 .phone{
   aspect-ratio: 9/18;
