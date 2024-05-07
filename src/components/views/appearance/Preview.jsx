@@ -36,8 +36,8 @@ const Preview = ({ image, profile, links }) => {
                         </div>
                         <div className="mb-8">
                             {links.map((link) => (
-                                <div className="card mb-2" key={link.id}>
-                                    <a href={link.url} className='break-words' target='_blank'>{link.title}</a>
+                                <div className="card h-auto mb-2 !p-0 !relative" key={link.id}>
+                                    <a href={link.url} className='btn break-words p-3 flex justify-center' target='_blank'>{link.title}</a>
                                 </div>
                             ))}
                         </div>
