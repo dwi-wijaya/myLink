@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 const Container = ({ children, className = '', ...others }) => {
   return (
-    <div className={`group-[.sidebar-expanded]/main:blur-[1px] mt-[5rem] mb-10 p-5 ${className} `} {...others}>
+    <div className={`group-[.sidebar-expanded]/main:blur-[1px] mb-10 px-5 ${className} `} {...others}>
       <section className='mx-auto max-w-[1024px]'>
         {children}
       </section>
