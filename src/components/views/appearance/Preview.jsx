@@ -6,7 +6,7 @@ const Preview = ({ image, profile, links }) => {
         <div className="flex align-middle justify-center">
             <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide">
                 <div className="relative h-full">
-                    <div className={`relative w-full h-40 bg-[#e6e6e6] dark:bg-background rounded-t-[1.5rem] `}>
+                    <div className={`relative w-full h-40 bg-[#e6e6e6] dark:bg-background  `}>
                         {image.cover && <img
                             src={image.cover}
                             alt="Avatar Preview"
@@ -15,7 +15,7 @@ const Preview = ({ image, profile, links }) => {
                     </div>
                     <div className="absolute top-[8%] content mt-10 p-5 w-full">
                         <div className="flex justify-center">
-                            <div className={`relative bg-container w-24 h-24 rounded-full overflow-hidden outline outline-[.5rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
+                            <div className={`relative bg-container w-24 h-24 rounded-full overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
                                 {image.avatar ? (
                                     <img
                                         src={image.avatar}
@@ -37,7 +37,7 @@ const Preview = ({ image, profile, links }) => {
                         <div className="mb-8">
                             {links.map((link) => (
                                 <div className="card mb-2" key={link.id}>
-                                    <a href={link.url} target='_blank'>{link.title}</a>
+                                    <a href={link.url} className='break-all' target='_blank'>{link.title}</a>
                                 </div>
                             ))}
                         </div>
