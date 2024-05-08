@@ -74,6 +74,11 @@ html {
   .grid-tc-minmax-90 {
     grid-template-columns: minmax(0, 95%);
   }
+  .grid-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+  }
 }
 .phone{
   aspect-ratio: 9/18;

@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
             position="top-right"
           />
 
-          <main className={`${outfit.className} group/main lg:ml-[80px]  ml-0`}>
+          <main className={`${outfit.className}   `}>
             <Overlay />
             <Component {...pageProps} />
             <div className="theme-glass glass"/>
