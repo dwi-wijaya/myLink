@@ -107,8 +107,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
             <div className="flex flex-col gap-3">
                 <div className="flex w-full gap-2 justify-between">
                     <label
-                        htmlFor="avatar"
-                        className="w-full relative px-4 py-2 btn rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
+                        htmlFor="cover"
+                        className="flex-1 whitespace-nowrap  w-full relative px-4 py-2 btn rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"
                     >
                         <i className='bx bxs-image'></i> Pick your own cover
                         <input
@@ -123,7 +123,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
                     <button
                         onClick={() => handleReset('cover')}
-                        className={`w-1/4 px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                        className={`flex-1  px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
                         disabled={!image.cover}
                     >
                         Remove
