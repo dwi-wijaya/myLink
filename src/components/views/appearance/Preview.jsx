@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
 
-const Preview = ({ image, profile, links }) => {
+const Preview = ({ image, profile, links, buttonStyle, btnColor, btnBg }) => {
     return (
         <div className="flex align-middle justify-center">
-            <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide">
+            <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide relative">
+            <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                 <div className="relative h-full">
-                    <div className={`relative w-full h-40 bg-[#e6e6e6] dark:bg-background  `}>
+                    <div className={`relative w-full h-40 bg-gray-100 dark:bg-background  `}>
                         {image.cover && <img
                             src={image.cover}
                             alt="Avatar Preview"
@@ -37,8 +38,8 @@ const Preview = ({ image, profile, links }) => {
                         <hr className='hr'/>
                         <div className="mb-8">
                             {links.map((link) => (
-                                <div className="mb-2" key={link.id}>
-                                    <a href={link.url} className='btn break-words p-3 flex justify-center !leading-5' target='_blank'>{link.title}</a>
+                                <div className="mb-3" key={link.id}>
+                                    <a href={link.url} className={`btn-base break-words ${buttonStyle} !py-6`} target='_blank' style={{color: btnColor, backgroundColor: btnBg}}>{link.title}</a>
                                 </div>
                             ))}
                         </div>
