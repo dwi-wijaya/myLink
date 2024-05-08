@@ -41,12 +41,12 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
         <>
             <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 mt-20 sm:mt-12">
                 {/* Circle Image */}
-                <div className="relative min-w-24 min-h-24 rounded-xl overflow-hidden border border-stroke">
+                <div className="relative min-w-24 min-h-24 max-w-24 max-h-24 rounded-xl overflow-hidden border border-stroke">
                     {image.avatar ? (
                         <img
                             src={image.avatar}
                             alt="Avatar Preview"
-                            className="object-cover w-full h-full"
+                            className="object-cover min-w-24 min-h-24 max-w-24 max-h-24"
                         />
                     ) : (
                         <div className="flex items-center justify-center min-w-24 min-h-24 bg-container ">
