@@ -37,11 +37,9 @@ export default function App({ Component, pageProps }) {
             position="top-right"
           />
 
-          <main className={`${outfit.className}   `}>
+          <main className={`${outfit.className}  h-full `}>
             <Overlay />
             <Component {...pageProps} />
-            <div className="theme-glass glass"/>
-            <div className="group-[.sidebar-expanded]/main:w-[9.5rem] sidebar-glass glass"/>
           </main>
         </AuthStateChangeProvicer>
       </UserProvider>

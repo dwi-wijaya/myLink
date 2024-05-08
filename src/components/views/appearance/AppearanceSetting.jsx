@@ -23,13 +23,13 @@ const AppearanceSetting = () => {
 
     return (
         <div className='flex flex-col sm:flex-row justify-between gap-y-8'>
-            <div className="appearance-setting w-full overflow-x-hidden max-h-[100vh] sm:!h-full px-[2.5%] sm:!px-0 scrollbar-hide border-r-0 sm:!border-r border-stroke min-w-[355px]">
+            <div className="appearance-setting w-full sm:overflow-x-hidden h-full  sm:!h-[100vh] px-4 sm:!px-[2.5%] scrollbar-hide border-r-0 sm:!border-r border-stroke min-w-[355px]">
                 <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
                 <hr className="hr" />
                 <LinkForm links={links} setLinks={setLinks} />
-                <button className='btn mt-6 mb-24'><i className="bx bx-check-circle"></i>Save</button>
+                <button className='btn mt-6 mb-0 sm:mb-24'><i className="bx bx-check-circle"></i>Save</button>
             </div>
-            <div className="w-full flex justify-center items-center px-[2.5%]">
+            <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
                 <Preview image={image} profile={profile} links={links} />
             </div>
         </div>

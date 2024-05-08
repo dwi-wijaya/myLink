@@ -39,9 +39,9 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
     return (
         <>
-            <div className="flex justify-between gap-3 items-center space-x-4 mt-12">
+            <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 mt-20 sm:mt-12">
                 {/* Circle Image */}
-                <div className="relative w-24 h-24 rounded-full overflow-hidden border border-stroke">
+                <div className="relative min-w-24 min-h-24 rounded-xl overflow-hidden border border-stroke">
                     {image.avatar ? (
                         <img
                             src={image.avatar}
@@ -49,7 +49,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                             className="object-cover w-full h-full"
                         />
                     ) : (
-                        <div className="flex items-center justify-center w-full h-full bg-container ">
+                        <div className="flex items-center justify-center min-w-24 min-h-24 bg-container ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-12 w-12 text-gray-400"
@@ -76,11 +76,11 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                 </div>
 
                 {/* Buttons */}
-                <div className="w-3/4">
-                    <div className="flex flex-col">
+                <div className="w-full !ml-0">
+                    <div className="flex flex-col w-full gap-2 sm:gap-3">
                         <label
                             htmlFor="avatar"
-                            className="relative px-4 py-2 mb-2 btn  rounded-lg cursor-pointer text-center"
+                            className="relative px-4 py-2 btn  rounded-lg cursor-pointer text-center"
                         >
                             <i className='bx bxs-user-circle'></i> Pick your own avatar
                             <input
@@ -104,8 +104,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
             </div>
             <hr className="hr" />
-            <div className="flex flex-col">
-                <div className="flex w-full gap-2 justify-between mb-3">
+            <div className="flex flex-col gap-3">
+                <div className="flex w-full gap-2 justify-between">
                     <label
                         htmlFor="avatar"
                         className="w-full relative px-4 py-2 btn rounded-lg cursor-pointer text-center flex gap-2 items-center justify-center"

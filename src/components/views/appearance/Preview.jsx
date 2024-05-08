@@ -15,7 +15,7 @@ const Preview = ({ image, profile, links }) => {
                     </div>
                     <div className="absolute top-[8%] content mt-10 p-5 w-full">
                         <div className="flex justify-center">
-                            <div className={`relative bg-container w-24 h-24 rounded-full overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
+                            <div className={`relative bg-container w-24 h-24 rounded-xl overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
                                 {image.avatar ? (
                                     <img
                                         src={image.avatar}
@@ -34,6 +34,7 @@ const Preview = ({ image, profile, links }) => {
                             <p className='text-xl font-semibold'>{profile.title}</p>
                             <p className='text-sm'>{profile.bio}</p>
                         </div>
+                        <hr className='hr'/>
                         <div className="mb-8">
                             {links.map((link) => (
                                 <div className="mb-2" key={link.id}>
