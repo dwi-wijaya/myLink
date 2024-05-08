@@ -58,15 +58,18 @@ const LinkForm = ({ links, setLinks }) => {
                     className={`link-form ${showForm ? 'link-form-visible' : 'link-form-hidden'}`}
                 >
 
-                    {!showForm && <motion.button
-                        initial={{ opacity: 0, }}
-                        animate={{ opacity: 1, }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
-                        onClick={() => setShowform(!showForm)} className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full'
-                    >
-                        <i className="bx bx-link"></i> Add link
-                    </motion.button>}
+                    {!showForm &&
+                        <motion.button
+                            initial={{ opacity: 0, }}
+                            animate={{ opacity: 1, }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
+                            onClick={() => setShowform(!showForm)}
+                            className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full hover:!bg-gray-700 hover:!text-slate-200'
+                        >
+                            <i className="bx bx-link"></i> Add link
+                        </motion.button>
+                    }
 
                     <motion.div
                         variants={{
@@ -109,11 +112,14 @@ const LinkForm = ({ links, setLinks }) => {
                     </motion.div>
                 </motion.div>
                 <motion.div className='flex flex-col gap-y-2'>
-                    {links.length != 0 ? <SortableContext items={links} strategy={verticalListSortingStrategy}>
-                        {links.map((link, index) => (
-                            <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
-                        ))}
-                    </SortableContext> : <h3 className='font-semibold text-center'>Oops! Looks like there are no links here</h3>}
+                    {links.length != 0 ?
+                        <SortableContext items={links} strategy={verticalListSortingStrategy}>
+                            {links.map((link, index) => (
+                                <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
+                            ))}
+                        </SortableContext> :
+                        <h3 className='font-semibold text-center'>Oops! Looks like there are no links here</h3>
+                    }
                 </motion.div>
             </AnimatePresence>
         </DndContext>
