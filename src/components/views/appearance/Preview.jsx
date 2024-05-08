@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const Preview = ({ image, profile, links, buttonStyle, btnColor, btnBg }) => {
+const Preview = ({ image, profile, links, customBtn }) => {
     return (
         <div className="flex align-middle justify-center">
             <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide relative">
@@ -39,7 +39,7 @@ const Preview = ({ image, profile, links, buttonStyle, btnColor, btnBg }) => {
                         <div className="mb-8">
                             {links.map((link) => (
                                 <div className="mb-3" key={link.id}>
-                                    <a href={link.url} className={`btn-base break-words ${buttonStyle} !py-6`} target='_blank' style={{color: btnColor, backgroundColor: btnBg}}>{link.title}</a>
+                                    <a href={link.url} className={`btn-base !h-auto !min-h-8 !inline-block break-words ${customBtn.style} `} target='_blank' style={{color: customBtn.color, backgroundColor: customBtn.background, '--tw-shadow-color': customBtn.shadow}}>{link.title}</a>
                                 </div>
                             ))}
                         </div>

@@ -80,54 +80,50 @@ const LinkComponent = ({
                     </button>
                     <div className="flex flex-col w-full">
                         <div className="flex items-center gap-3 mb-0">
-                            <div className="w-full">
-                                <div className="grid grid-tc-minmax-90">
-                                    <div className="flex items-center gap-3">
-                                        {onUpdate.title && (
-                                            <input
-                                                ref={inputRef}
-                                                id={id}
-                                                name="title"
-                                                autoFocus={true}
-                                                onChange={handleChange}
-                                                type="text"
-                                                className="w-full bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none"
-                                                value={linkValue.title}
-                                            />
-                                        )}
-                                        {!onUpdate.title && <p className="text-ellipsis overflow-hidden whitespace-nowrap">{linkValue.title}</p>}
-                                        {!onUpdate.title && (
-                                            <i
-                                                onClick={() => setOnupdate({ title: true })}
-                                                className="bx bx-pencil"
-                                            ></i>
-                                        )}
-                                    </div>
+                            <div className="w-full grid grid-tc-minmax-90">
+                                <div className="flex items-center gap-3">
+                                    {onUpdate.title && (
+                                        <input
+                                            ref={inputRef}
+                                            id={id}
+                                            name="title"
+                                            autoFocus={true}
+                                            onChange={handleChange}
+                                            type="text"
+                                            className="w-full bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none"
+                                            value={linkValue.title}
+                                        />
+                                    )}
+                                    {!onUpdate.title && <p className="line-clamp-1 text-primary">{linkValue.title}</p>}
+                                    {!onUpdate.title && (
+                                        <i
+                                            onClick={() => setOnupdate({ title: true })}
+                                            className="bx bx-pencil"
+                                        ></i>
+                                    )}
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex items-center gap-3 mb-0">
-                            <div className="w-full">
-                                <div className="grid grid-tc-minmax-90">
-                                    <div className="flex items-center gap-3">
-                                        {onUpdate.url && (
-                                            <input
-                                                ref={inputRef}
-                                                id={id}
-                                                name="url"
-                                                onChange={handleChange}
-                                                type="text"
-                                                autoFocus={true}
-                                                className="w-full url bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none text-primary"
-                                                value={linkValue.url}
-                                            />
-                                        )}
-                                        {!onUpdate.url && <p className="text-ellipsis overflow-hidden whitespace-nowrap text-primary">{linkValue.url}</p>}
-                                        {!onUpdate.url && (
-                                            <i onClick={() => setOnupdate({ url: true })} className="bx bx-pencil"></i>
-                                        )}
-                                    </div>
+                            <div className="w-full grid grid-tc-minmax-90">
+                                <div className="flex items-center gap-3">
+                                    {onUpdate.url && (
+                                        <input
+                                            ref={inputRef}
+                                            id={id}
+                                            name="url"
+                                            onChange={handleChange}
+                                            type="text"
+                                            autoFocus={true}
+                                            className="w-full url bg-transparent p-0 outline-offset-2 outline-transparent border-none box-shadow-none text-primary"
+                                            value={linkValue.url}
+                                        />
+                                    )}
+                                    {!onUpdate.url && <p className="line-clamp-1 text-primary">{linkValue.url}</p>}
+                                    {!onUpdate.url && (
+                                        <i onClick={() => setOnupdate({ url: true })} className="bx bx-pencil"></i>
+                                    )}
                                 </div>
                             </div>
                         </div>

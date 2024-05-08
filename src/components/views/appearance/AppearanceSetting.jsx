@@ -22,10 +22,22 @@ const AppearanceSetting = () => {
         { id: 3, title: "Link 3", url: 'http://', order: 3 }
     ]);
 
-    const buttonStyles = ['', 'rounded-md','rounded-xl', 'border border-slate-300', 'border ring-1 ring-offset-2 rounded-xl ring-slate-300', 'shadow-md shadow-slate-200' ]
-    const [selectedButtonStyle, setSelectedButtonStyle] = useState('')
-    const [btnColor, setBtnColor] = useState('#000')
-    const [btnBg, setBtnBg] = useState('#f8fafc')
+    const buttonStyles = [
+        'bg-slate-700', 'bg-slate-700 rounded-xl', 'bg-slate-700 rounded-full',
+        'outline outline-1 ', 'rounded-xl outline outline-1 ', 'rounded-full outline outline-1 ',
+        'outline outline-dashed outline-1 ', 'rounded-xl outline outline-dashed outline-1 ', 'rounded-full outline outline-dashed outline-1 ',
+        'mb-1 border outline outline-offset-2 outline-1', 'mb-1 border rounded-xl outline outline-offset-2 outline-1', 'mb-1 border  rounded-full outline outline-offset-2 outline-1 ',
+        'border border-l-8 border-black','rounded-xl border border-l-8 border-black','rounded-full border border-l-8 border-black',
+        'shadow-[5px_5px_0px_0px] outline outline-1 mb-1','rounded-xl shadow-[5px_5px_0px_0px] outline outline-1 mb-1','rounded-full shadow-[5px_5px_0px_0px] outline outline-1 mb-1',
+        'bg-slate-500 shadow-lg shadow-slate-500', 'bg-slate-500 rounded-xl shadow-lg shadow-slate-500', 'bg-slate-500 rounded-full shadow-lg shadow-slate-500',
+    ]
+
+    const [customBtn, setCustomBtn] = useState({
+        style: '',
+        color: '#cbd5e1',
+        background: '#334155',
+        shadow: '#334155',
+    })
 
     return (
         <div className='flex flex-col sm:flex-row justify-between gap-y-8'>
@@ -34,11 +46,11 @@ const AppearanceSetting = () => {
                 <hr className="hr" />
                 <LinkForm links={links} setLinks={setLinks} />
                 <hr className="hr" />
-                <Buttons styles={buttonStyles} buttonStyle={selectedButtonStyle} setButtonStyle={setSelectedButtonStyle} btnColor={btnColor} setBtnColor={setBtnColor} btnBg={btnBg} setBtnBg={setBtnBg} />
+                <Buttons styles={buttonStyles} customBtn={customBtn} setCustomBtn={setCustomBtn} />
                 <button className='btn mt-6 mb-0 sm:mb-24'><i className="bx bx-check-circle"></i>Save</button>
             </div>
             <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
-                <Preview image={image} profile={profile} links={links} buttonStyle={selectedButtonStyle} btnColor={btnColor} btnBg={btnBg} />
+                <Preview image={image} profile={profile} links={links} customBtn={customBtn} />
             </div>
         </div>
     )

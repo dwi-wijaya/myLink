@@ -55,7 +55,7 @@ html {
     @apply p-3 leading-4 justify-center rounded-md shadow-sm bg-slate-700 dark:bg-slate-200 text-slate-300 hover:text-slate-50 dark:text-slate-700 dark:hover:text-slate-900 flex gap-2 items-center font-normal w-full transition-3s
   }
   .btn-base{
-    @apply p-3 leading-4 justify-center h-8 w-full flex items-center 
+    @apply py-4  px-6 leading-4 justify-center h-8 w-full flex items-center 
   }
 
   .hr {
