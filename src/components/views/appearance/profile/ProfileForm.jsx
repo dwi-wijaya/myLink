@@ -2,7 +2,7 @@ import { ColorPicker } from 'antd';
 import { FileInput } from 'flowbite-react';
 import { useState } from 'react';
 
-const ProfileForm = ({ image, setImage, profile, setProfile }) => {
+const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -11,6 +11,13 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
             [name]: value,
         });
     };
+
+    const handleAvatarType = (value) => {
+        setProfile({
+            ...profile,
+            avatarType: value,
+        });
+    }
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -37,11 +44,12 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
         console.log(image);
     };
 
+
     return (
         <>
             <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 ">
                 {/* Circle Image */}
-                <div className="relative min-w-24 min-h-24 max-w-24 max-h-24 rounded-xl overflow-hidden border border-stroke">
+                <div className={`relative min-w-24 min-h-24 max-w-24 max-h-24 overflow-hidden border border-stroke ${profile.avatarType}`}>
                     {image.avatar ? (
                         <img
                             src={image.avatar}
@@ -92,13 +100,20 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
                                 className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                             />
                         </label>
-                        <button
-                            onClick={() => handleReset('avatar')}
-                            className={`px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
-                            disabled={!image.avatar}
-                        >
-                            Remove
-                        </button>
+                        <div className="flex gap-2">
+                            {avatarTypes.map((type, i) => (
+                                <div onClick={() => handleAvatarType(type)} className={`h-12 w-12 bg-container border border-stroke flex items-center justify-center ${type}`} key={i}>
+                                    {type == profile.avatarType && <i className='text-2xl bx bx-check'></i>}
+                                </div>
+                            ))}
+                            <button
+                                onClick={() => handleReset('avatar')}
+                                className={`flex-1 px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                                disabled={!image.avatar}
+                            >
+                                Remove
+                            </button>
+                        </div>
                     </div>
                 </div>
 

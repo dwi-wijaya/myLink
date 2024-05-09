@@ -16,7 +16,7 @@ const Preview = ({ image, profile, links, customBtn }) => {
                     </div>
                     <div className="absolute top-[8%] content mt-10 p-5 w-full">
                         <div className="flex justify-center">
-                            <div className={`relative bg-container w-24 h-24 rounded-xl overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
+                            <div className={`relative bg-container w-24 h-24 ${profile.avatarType} overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
                                 {image.avatar ? (
                                     <img
                                         src={image.avatar}

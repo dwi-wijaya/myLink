@@ -13,9 +13,12 @@ const AppearanceSetting = () => {
         avatar: '',
         cover: '',
     });
+    const avatarTypes = ['rounded-full','rounded-xl'];
+
     const [profile, setProfile] = useState({
+        avatarType: 'rounded-xl',
         title: '',
-        bio: ''
+        bio: '',
     });
 
     const [links, setLinks] = useState([
@@ -58,7 +61,7 @@ const AppearanceSetting = () => {
                     </div>
                 </Legend>
                 <Legend title="Profile" >
-                    <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} />
+                    <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} avatarTypes={avatarTypes} />
                 </Legend>
                 <Legend title="Links" >
                     <LinkForm links={links} setLinks={setLinks} />
