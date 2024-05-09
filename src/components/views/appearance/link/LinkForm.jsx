@@ -65,7 +65,7 @@ const LinkForm = ({ links, setLinks }) => {
                             exit={{ opacity: 0, scale: 0 }}
                             whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
                             onClick={() => setShowform(!showForm)}
-                            className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full hover:!bg-gray-700 hover:!text-slate-200'
+                            className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full hover:!bg-gray-700 hover:!text-slate-200 dark:hover:!bg-slate-200 dark:hover:!text-slate-600'
                         >
                             <i className="bx bx-link"></i> Add link
                         </motion.button>
