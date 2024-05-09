@@ -7,7 +7,7 @@ const Preview = ({ image, profile, links, customBtn }) => {
             <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide relative">
             <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                 <div className="relative h-full">
-                    <div className={`relative w-full h-40 bg-gray-100 dark:bg-background  `}>
+                    <div className={`relative w-full h-40 bg-gray-200 dark:bg-background  `}>
                         {image.cover && <img
                             src={image.cover}
                             alt="Avatar Preview"
