@@ -6,7 +6,7 @@ const ColorPicker = dynamic(() => import('antd/lib/color-picker'), {
 
 const Buttons = ({ styles, customBtn, setCustomBtn }) => {
     return (
-        <div className='card '>
+        <div className=' '>
 
             <div className="grid grid-cols-3 gap-4 py-1 mb-5">
                 {styles.map((style, index) => (

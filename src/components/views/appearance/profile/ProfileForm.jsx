@@ -39,7 +39,7 @@ const ProfileForm = ({ image, setImage, profile, setProfile }) => {
 
     return (
         <>
-            <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 mt-20 sm:mt-12">
+            <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 ">
                 {/* Circle Image */}
                 <div className="relative min-w-24 min-h-24 max-w-24 max-h-24 rounded-xl overflow-hidden border border-stroke">
                     {image.avatar ? (
