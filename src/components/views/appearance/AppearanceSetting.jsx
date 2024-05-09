@@ -69,7 +69,7 @@ const AppearanceSetting = () => {
                 <Legend title="Button" >
                     <Buttons styles={buttonStyles} customBtn={customBtn} setCustomBtn={setCustomBtn} />
                 </Legend>
-                <button className='btn mt-6 mb-0 sm:mb-24'><i className="bx bx-check-circle"></i>Save</button>
+                <button disabled className='btn mt-6 mb-0 sm:mb-12'><i className="bx bx-check-circle"></i>Save</button>
             </div>
             <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
                 <Preview image={image} profile={profile} links={links} customBtn={customBtn} />
