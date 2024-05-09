@@ -31,12 +31,12 @@ const SignoutToggle = () => {
                             Are you sure you want to sign out?
                         </h3>
                         <div className="flex justify-center gap-4">
-                            <button className="btn" onClick={handleSignout}>
+                            <button className="btn flex-1" onClick={handleSignout}>
                                 {"Yes, I'm sure"}
                             </button>
-                            <Button color="gray" onClick={() => setOpenModal(false)}>
+                            <button className="btn !bg-transparent !text-slate-700 dark:!text-slate-200 flex-1 border border-stroke" onClick={() => setOpenModal(false)}>
                                 No, cancel
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 </Modal.Body>
