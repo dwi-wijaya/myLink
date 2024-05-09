@@ -12,8 +12,6 @@ import {
 } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
-import { v4 } from "uuid";
-
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -41,12 +39,13 @@ export const CreateUser = async (email, password) => {
   const { isNewUser } = getAdditionalUserInfo(result)
   if (isNewUser) {
     const db = getFirestore(firebase_app)
+    const uid = result.user.uid
     const data = {
       uid: result.user.uid,
       email: result.user.email,
       timestamp: Date.now()
     }
-    await setDoc(doc(db, 'links', v4()), data, {
+    await setDoc(doc(db, 'links', uid), data, {
       merge: true,
     });
   }
@@ -59,12 +58,13 @@ export const GoogleSignIn = async () => {
   const { isNewUser } = getAdditionalUserInfo(result)
   if (isNewUser) {
     const db = getFirestore(firebase_app)
+    const uid = result.user.uid
     const data = {
       uid: result.user.uid,
       email: result.user.email,
       timestamp: Date.now()
     }
-    await setDoc(doc(db, 'links', v4()), data, {
+    await setDoc(doc(db, 'links', uid), data, {
       merge: true,
     });
   }
