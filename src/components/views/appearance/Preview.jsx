@@ -3,11 +3,13 @@ import React from 'react'
 
 const Preview = ({ image, profile, links, customBtn }) => {
     return (
-        <div className="flex align-middle justify-center">
+        <div className="flex align-middle justify-center rounded-[1.5rem] relavie ">
+            <div className="h-[64px] w-1 bg-slate-800 dark:bg-slate-700 absolute -right-1 top-[142px] rounded-e-lg"></div>
+            <div className="h-[42px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[124px] rounded-s-lg"></div>
+            <div className="h-[42px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[172px] rounded-s-lg"></div>
             <div className="phone w-[300px] bg-container rounded-[1.5rem] text-center border-[0.75rem] border-slate-800 dark:border-slate-700 overflow-y-auto scrollbar-hide relative">
-                <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                 <div className="relative h-full">
-                    <div className={`relative w-full h-40 bg-gray-200 dark:bg-background  `}>
+                    <div className={`relative w-full h-40 bg-slate-200 dark:bg-background  `}>
                         {profile.cover &&
                             <Image
                                 width={96}
