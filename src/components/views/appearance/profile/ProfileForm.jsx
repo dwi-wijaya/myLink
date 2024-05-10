@@ -5,7 +5,7 @@ import { FileInput } from 'flowbite-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const ProfileForm = ({ profile, setProfile, avatarTypes, username, setUsername, usernameErr, setUsernameErr }) => {
+const ProfileForm = ({ profile, setProfile, avatarTypes, username, setUsername, usernameErr, setUsernameErr, uid }) => {
     const [LoadingCheckCheck, setLoadingCheckCheck] = useState(false);
     const debounceCheck = useDebounce(username)
 
@@ -26,7 +26,10 @@ const ProfileForm = ({ profile, setProfile, avatarTypes, username, setUsername, 
             setLoadingCheckCheck(true)
             if (username != '') {
                 const { result } = await getDocument('links', username, false, 'username');
-                if (Object.keys(result).length !== 0) {
+                console.log('uid :', uid);
+                console.log('uid res :', result.uid);
+                console.log(result.uid == uid);
+                if (Object.keys(result).length !== 0 && result.uid !== uid) {
                     setUsernameErr(true);
                 } else {
                     setUsernameErr(false);

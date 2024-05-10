@@ -75,6 +75,7 @@ const AppearanceSetting = () => {
                 <Legend title="Profile" >
                     <ProfileForm
                         username={username}
+                        uid={uid}
                         setUsername={setUsername}
                         profile={profile}
                         setProfile={setProfile}
