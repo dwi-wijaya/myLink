@@ -7,25 +7,22 @@ import { Divider } from 'antd';
 import Buttons from './buttons/Buttons';
 import Legend from '@/components/elements/Legend';
 import toast from 'react-hot-toast';
+import { useUser } from '@/context/user';
+import { updateDocument } from '@/services/firebase/crud/updateDocument';
 
 const AppearanceSetting = () => {
-    const [image, setImage] = useState({
-        avatar: '',
-        cover: '',
-    });
-    const avatarTypes = ['rounded-full','rounded-xl'];
+    const user = useUser();
+    const setUser = useUser()
 
-    const [profile, setProfile] = useState({
-        avatarType: 'rounded-xl',
-        title: '',
-        bio: '',
-    });
+    const { uid, profile: UserProfile, image: UserImage, links: UserLinks, customBtn: UserBtnStyle } = user
+    const [Loading, setLoading] = useState(false);
 
-    const [links, setLinks] = useState([
-        { id: 1, title: "Link 1", url: 'http://', order: 1 },
-        { id: 2, title: "Link 2", url: 'http://', order: 2 },
-        { id: 3, title: "Link 3", url: 'http://', order: 3 }
-    ]);
+    const [image, setImage] = useState(UserImage);
+    const avatarTypes = ['rounded-full', 'rounded-xl'];
+
+    const [profile, setProfile] = useState(UserProfile);
+
+    const [links, setLinks] = useState(UserLinks);
 
     const buttonStyles = [
         'bg-slate-700', 'bg-slate-700 rounded-xl', 'bg-slate-700 rounded-full',
@@ -37,17 +34,33 @@ const AppearanceSetting = () => {
         'bg-slate-500 shadow-lg shadow-slate-500', 'bg-slate-500 rounded-xl shadow-lg shadow-slate-500', 'bg-slate-500 rounded-full shadow-lg shadow-slate-500',
     ]
 
-    const [customBtn, setCustomBtn] = useState({
-        style: '',
-        color: '#cbd5e1',
-        background: '#334155',
-        shadow: '#334155',
-    })
+    const [customBtn, setCustomBtn] = useState(UserBtnStyle)
     const myLinkUrl = process.env.NEXT_PUBLIC_WEB_URL + profile.title;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(myLinkUrl)
         toast.success("Copied to clipboard");
+    }
+    const handleSave = async () => {
+        try {
+            setLoading(true);
+            const data = { image, profile, links, customBtn }
+
+            const { success, error } = await updateDocument("links", uid, data);
+
+            if (success) {
+                toast.success(`Data saved successfully`);
+            } else {
+                setLoading(false);
+                toast.error(`Failed to save`);
+                console.error("Error:", error);
+            }
+        } catch (err) {
+            setLoading(false);
+            console.error("An error occurred:", err);
+        } finally {
+            setLoading(false);
+        }
     }
     return (
         <div className='flex flex-col sm:flex-row justify-between gap-y-8'>
@@ -69,7 +82,11 @@ const AppearanceSetting = () => {
                 <Legend title="Button" >
                     <Buttons styles={buttonStyles} customBtn={customBtn} setCustomBtn={setCustomBtn} />
                 </Legend>
-                <button disabled className='btn mt-6 mb-0 sm:mb-12'><i className="bx bx-check-circle"></i>Save</button>
+
+                <button disabled={Loading} onClick={handleSave} className='btn mt-6 mb-0 sm:mb-12'>
+                    {Loading ? (<> <i className="bx bx-loader bx-spin" /> Loading...</>) : 
+                    (<><i className="bx bx-check-circle"></i>Save </>)}
+                </button>
             </div>
             <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
                 <Preview image={image} profile={profile} links={links} customBtn={customBtn} />

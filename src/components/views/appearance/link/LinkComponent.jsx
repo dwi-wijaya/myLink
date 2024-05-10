@@ -51,7 +51,7 @@ const LinkComponent = ({
     }, [onUpdate]);
 
     const handleUpdate = (id, value, type) => {
-        console.log(links);
+        
         const index = links.findIndex((link) => link.id == id);
         // // If the object is not found, return without updating
         if (index === -1) return;

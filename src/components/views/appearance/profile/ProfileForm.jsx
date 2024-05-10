@@ -1,5 +1,6 @@
 import { ColorPicker } from 'antd';
 import { FileInput } from 'flowbite-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
@@ -33,7 +34,6 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
             };
             reader.readAsDataURL(file);
         }
-        console.log(image);
     };
 
     const handleReset = (type) => {
@@ -41,7 +41,6 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
             ...prevState,
             [type]: ''
         }));
-        console.log(image);
     };
 
 
@@ -51,7 +50,9 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
                 {/* Circle Image */}
                 <div className={`relative min-w-24 min-h-24 max-w-24 max-h-24 overflow-hidden border border-stroke ${profile.avatarType}`}>
                     {image.avatar ? (
-                        <img
+                        <Image
+                            width={96}
+                            height={96}
                             src={image.avatar}
                             alt="Avatar Preview"
                             className="object-cover min-w-24 min-h-24 max-w-24 max-h-24"
