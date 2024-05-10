@@ -26,9 +26,6 @@ const ProfileForm = ({ profile, setProfile, avatarTypes, username, setUsername, 
             setLoadingCheckCheck(true)
             if (username != '') {
                 const { result } = await getDocument('links', username, false, 'username');
-                console.log('uid :', uid);
-                console.log('uid res :', result.uid);
-                console.log(result.uid == uid);
                 if (Object.keys(result).length !== 0 && result.uid !== uid) {
                     setUsernameErr(true);
                 } else {
