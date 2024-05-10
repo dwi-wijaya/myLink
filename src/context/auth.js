@@ -1,17 +1,20 @@
 import { Authentication } from '@/services/firebase/config'
 import { useEffect, useState } from 'react'
 import { useUser, InitialUserState } from './user';
+import getDocument from '@/services/firebase/crud/getDocument';
 
 export  const AuthStateChangeProvicer = ({children}) => {
     const [isLoading, setIsLoading] = useState(true);
     const user = useUser();
     const {setUser} = user;
 
-    const initiateAuthStateChange = () => {
-        Authentication().onAuthStateChanged((user) => {
+    const initiateAuthStateChange = async () => {
+        Authentication().onAuthStateChanged( async(user) => {
             if (user) {
                 console.log("user authenticated");
-                setUser({email: user.email, uuid: user.uid})
+                const uid = user.uid
+                const {result} = await getDocument('links', uid)
+                setUser(result)
             } else {
                 console.log("user not authenticated");
                 setUser(InitialUserState)

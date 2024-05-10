@@ -12,7 +12,6 @@ export async function updateDocument(collectionName, id, newData) {
         await setDoc(docRef, newData, { merge: true });
         success = true
     } catch (e) {
-        console.log('p');
         error = e;
     }
     

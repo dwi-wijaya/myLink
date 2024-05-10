@@ -9,14 +9,14 @@ import { useEffect, useState } from "react";
 const SignoutToggle = () => {
     const [openModal, setOpenModal] = useState(false);
     const user = useUser();
-    const { uuid } = user;
+    const { uid } = user;
 
     const handleSignout = () => {
         SignOut();
         setOpenModal(false);
     }
     
-    return uuid && (
+    return uid && (
         <>
             <button className='toggle right-[4.5rem]' onClick={() => setOpenModal(true)}>
                 <i className="icon-logout rotate-180" />

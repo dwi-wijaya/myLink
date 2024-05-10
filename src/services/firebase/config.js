@@ -46,7 +46,6 @@ export const CreateUser = async (email, password) => {
     data.uid = result.user.uid
     data.email = result.user.email
     data.timestamp = Date.now()
-    data.image.avatar = result.user.photoURL
 
     await setDoc(doc(db, 'links', uid), data, {
       merge: true,
@@ -63,12 +62,12 @@ export const GoogleSignIn = async () => {
     const db = getFirestore(firebase_app)
     const uid = result.user.uid
     const data = INITIAL_USER_DATA
-
+    
     data.uid = result.user.uid
     data.email = result.user.email
     data.timestamp = Date.now()
     data.image.avatar = result.user.photoURL
-
+    
     await setDoc(doc(db, 'links', uid), data, {
       merge: true,
     });
