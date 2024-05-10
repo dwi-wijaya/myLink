@@ -1,17 +1,41 @@
+import useDebounce from '@/hooks/useDebounce';
+import getDocument from '@/services/firebase/crud/getDocument';
 import { ColorPicker } from 'antd';
 import { FileInput } from 'flowbite-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
+const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, username, setUsername, usernameErr, setUsernameErr }) => {
+    const [LoadingCheckCheck, setLoadingCheckCheck] = useState(false);
+    const debounceCheck = useDebounce(username)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setProfile({
-            ...profile,
-            [name]: value,
-        });
+        if (name == 'username') {
+            setUsername(value.replace(/[^a-z0-9_]/g, '').toLowerCase());
+        } else {
+            setProfile({
+                ...profile,
+                [name]: value,
+            });
+        }
     };
+
+    useEffect(() => {
+        const checkUsername = async () => {
+            setLoadingCheckCheck(true)
+            if (username != '') {
+                const { result } = await getDocument('links', username, false, 'username');
+                if (Object.keys(result).length !== 0) {
+                    setUsernameErr('Username already in use');
+                } else {
+                    setUsernameErr(false);
+                }
+                setLoadingCheckCheck(false)
+            }
+        }
+        checkUsername()
+    }, [debounceCheck])
 
     const handleAvatarType = (value) => {
         setProfile({
@@ -145,11 +169,16 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes }) => {
                         Remove
                     </button>
                 </div>
-                <div className="flex gap-3 relative">
-                    <input name="title" value={profile.title} onChange={handleChange} type="text" className="form-input mb-3" placeholder='Profile Title' />
-                </div>
             </div>
-            <textarea name="bio" value={profile.bio} onChange={handleChange} id="" cols="30" rows="3" className='form-input' placeholder='Bio'></textarea>
+            <div className="flex flex-col gap-2 mt-2">
+                <div className="">
+                    <input name="username" value={username} onChange={handleChange} type="text" className="form-input" placeholder='Username' />
+                    {usernameErr != '' && <p className='text-sm text-red-400'>* {usernameErr}</p>}
+                </div>
+                <input name="title" value={profile.title} onChange={handleChange} type="text" className=" form-input" placeholder='Profile Title' />
+                <textarea name="bio" value={profile.bio} onChange={handleChange} id="" cols="30" rows="3" className='form-input' placeholder='Bio'></textarea>
+
+            </div>
         </>
     );
 };

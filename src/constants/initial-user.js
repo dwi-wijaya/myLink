@@ -3,6 +3,7 @@ export const INITIAL_USER_DATA = {
         avatar: '',
         cover: ''
     },
+    username: '',
     profile: {
         avatarType: 'rounded-xl',
         title: '',

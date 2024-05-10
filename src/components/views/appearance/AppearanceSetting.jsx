@@ -14,13 +14,14 @@ const AppearanceSetting = () => {
     const user = useUser();
     const setUser = useUser()
 
-    const { uid, profile: UserProfile, image: UserImage, links: UserLinks, customBtn: UserBtnStyle } = user
+    const { uid, username:usrName, profile: UsrProfile, image: UsrImage, links: UserLinks, customBtn: UsrBtnStyle } = user
     const [Loading, setLoading] = useState(false);
-
-    const [image, setImage] = useState(UserImage);
+    const [usernameErr, setUsernameErr] = useState('');
+    const [image, setImage] = useState(UsrImage);
     const avatarTypes = ['rounded-full', 'rounded-xl'];
 
-    const [profile, setProfile] = useState(UserProfile);
+    const [profile, setProfile] = useState(UsrProfile);
+    const [username, setUsername] = useState(usrName);
 
     const [links, setLinks] = useState(UserLinks);
 
@@ -34,8 +35,8 @@ const AppearanceSetting = () => {
         'bg-slate-500 shadow-lg shadow-slate-500', 'bg-slate-500 rounded-xl shadow-lg shadow-slate-500', 'bg-slate-500 rounded-full shadow-lg shadow-slate-500',
     ]
 
-    const [customBtn, setCustomBtn] = useState(UserBtnStyle)
-    const myLinkUrl = process.env.NEXT_PUBLIC_WEB_URL + profile.title;
+    const [customBtn, setCustomBtn] = useState(UsrBtnStyle)
+    const myLinkUrl = process.env.NEXT_PUBLIC_WEB_URL + username;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(myLinkUrl)
@@ -44,7 +45,7 @@ const AppearanceSetting = () => {
     const handleSave = async () => {
         try {
             setLoading(true);
-            const data = { image, profile, links, customBtn }
+            const data = { username, image, profile, links, customBtn }
 
             const { success, error } = await updateDocument("links", uid, data);
 
@@ -74,7 +75,17 @@ const AppearanceSetting = () => {
                     </div>
                 </Legend>
                 <Legend title="Profile" >
-                    <ProfileForm image={image} setImage={setImage} profile={profile} setProfile={setProfile} avatarTypes={avatarTypes} />
+                    <ProfileForm
+                        image={image}
+                        setImage={setImage}
+                        username={username}
+                        setUsername={setUsername}
+                        profile={profile}
+                        setProfile={setProfile}
+                        avatarTypes={avatarTypes}
+                        usernameErr={usernameErr}
+                        setUsernameErr={setUsernameErr} 
+                />
                 </Legend>
                 <Legend title="Links" >
                     <LinkForm links={links} setLinks={setLinks} />
@@ -84,8 +95,8 @@ const AppearanceSetting = () => {
                 </Legend>
 
                 <button disabled={Loading} onClick={handleSave} className='btn mt-6 mb-0 sm:mb-12'>
-                    {Loading ? (<> <i className="bx bx-loader bx-spin" /> Loading...</>) : 
-                    (<><i className="bx bx-check-circle"></i>Save </>)}
+                    {Loading ? (<> <i className="bx bx-loader bx-spin" /> Loading...</>) :
+                        (<><i className="bx bx-check-circle"></i>Save </>)}
                 </button>
             </div>
             <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
