@@ -17,14 +17,13 @@ const AppearanceSetting = () => {
     const { uid, username:usrName, profile: UsrProfile, image: UsrImage, links: UserLinks, customBtn: UsrBtnStyle } = user
     const [Loading, setLoading] = useState(false);
     const [usernameErr, setUsernameErr] = useState('');
-    const [image, setImage] = useState(UsrImage);
-    const avatarTypes = ['rounded-full', 'rounded-xl'];
-
-    const [profile, setProfile] = useState(UsrProfile);
+    
     const [username, setUsername] = useState(usrName);
-
+    const [profile, setProfile] = useState(UsrProfile);
     const [links, setLinks] = useState(UserLinks);
-
+    const [customBtn, setCustomBtn] = useState(UsrBtnStyle)
+    
+    const avatarTypes = ['rounded-full', 'rounded-xl'];
     const buttonStyles = [
         'bg-slate-700', 'bg-slate-700 rounded-xl', 'bg-slate-700 rounded-full',
         'outline outline-1 ', 'rounded-xl outline outline-1 ', 'rounded-full outline outline-1 ',
@@ -35,7 +34,6 @@ const AppearanceSetting = () => {
         'bg-slate-500 shadow-lg shadow-slate-500', 'bg-slate-500 rounded-xl shadow-lg shadow-slate-500', 'bg-slate-500 rounded-full shadow-lg shadow-slate-500',
     ]
 
-    const [customBtn, setCustomBtn] = useState(UsrBtnStyle)
     const myLinkUrl = process.env.NEXT_PUBLIC_WEB_URL + username;
 
     const handleCopy = () => {
@@ -45,7 +43,7 @@ const AppearanceSetting = () => {
     const handleSave = async () => {
         try {
             setLoading(true);
-            const data = { username, image, profile, links, customBtn }
+            const data = { username, profile, links, customBtn }
 
             const { success, error } = await updateDocument("links", uid, data);
 
@@ -76,8 +74,6 @@ const AppearanceSetting = () => {
                 </Legend>
                 <Legend title="Profile" >
                     <ProfileForm
-                        image={image}
-                        setImage={setImage}
                         username={username}
                         setUsername={setUsername}
                         profile={profile}
@@ -100,7 +96,7 @@ const AppearanceSetting = () => {
                 </button>
             </div>
             <div className="w-full flex justify-center items-center px-[2.5%] mb-12 sm:mb-0">
-                <Preview image={image} profile={profile} links={links} customBtn={customBtn} />
+                <Preview profile={profile} links={links} customBtn={customBtn} />
             </div>
         </div>
     )
