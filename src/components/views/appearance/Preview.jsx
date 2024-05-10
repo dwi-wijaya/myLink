@@ -8,23 +8,23 @@ const Preview = ({ image, profile, links, customBtn }) => {
                 <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                 <div className="relative h-full">
                     <div className={`relative w-full h-40 bg-gray-200 dark:bg-background  `}>
-                        {image.cover &&
+                        {profile.cover &&
                             <Image
                                 width={96}
                                 height={96}
-                                src={image.cover}
+                                src={profile.cover}
                                 alt="Avatar Preview"
                                 className="object-cover w-full h-full"
                             />}
                     </div>
                     <div className="absolute top-[8%] content mt-10 p-5 w-full">
                         <div className="flex justify-center">
-                            <div className={`relative bg-container w-24 h-24 ${profile.avatarType} overflow-hidden outline outline-[.25rem] outline-container ${image.avatar ? '' : 'border border-stroke'}  `}>
-                                {image.avatar ? (
+                            <div className={`relative bg-container w-24 h-24 ${profile.avatarType} overflow-hidden outline outline-[.25rem] outline-container ${profile.avatar ? '' : 'border border-stroke'}  `}>
+                                {profile.avatar ? (
                                     <Image
                                         width={96}
                                         height={96}
-                                        src={image.avatar}
+                                        src={profile.avatar}
                                         alt="Avatar Preview"
                                         className="object-cover w-full h-full"
                                     />

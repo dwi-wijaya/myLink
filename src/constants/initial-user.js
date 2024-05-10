@@ -1,11 +1,9 @@
 export const INITIAL_USER_DATA = {
-    image: {
-        avatar: '',
-        cover: ''
-    },
     username: '',
     profile: {
         avatarType: 'rounded-xl',
+        avatar: '',
+        cover: '',
         title: '',
         bio: ''
     },

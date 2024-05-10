@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { INITIAL_USER_DATA } from "@/constants/initial-user";
+import { v4 } from "uuid";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -66,7 +67,7 @@ export const GoogleSignIn = async () => {
     data.uid = result.user.uid
     data.email = result.user.email
     data.timestamp = Date.now()
-    data.image.avatar = result.user.photoURL
+    data.profile.avatar = result.user.photoURL
     
     await setDoc(doc(db, 'links', uid), data, {
       merge: true,

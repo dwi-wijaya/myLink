@@ -5,7 +5,7 @@ import { FileInput } from 'flowbite-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, username, setUsername, usernameErr, setUsernameErr }) => {
+const ProfileForm = ({ profile, setProfile, avatarTypes, username, setUsername, usernameErr, setUsernameErr }) => {
     const [LoadingCheckCheck, setLoadingCheckCheck] = useState(false);
     const debounceCheck = useDebounce(username)
 
@@ -50,18 +50,18 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, userna
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImage(prevState => ({
+                setProfile(prevState => ({
                     ...prevState,
                     [type]: reader.result
                 }));
-                // setImage({ avatar: reader.result });
+                // setProfile({ avatar: reader.result });
             };
             reader.readAsDataURL(file);
         }
     };
 
     const handleReset = (type) => {
-        setImage(prevState => ({
+        setProfile(prevState => ({
             ...prevState,
             [type]: ''
         }));
@@ -73,11 +73,11 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, userna
             <div className="flex justify-between gap-2 sm:gap-3 items-center space-x-4 ">
                 {/* Circle Image */}
                 <div className={`relative min-w-24 min-h-24 max-w-24 max-h-24 overflow-hidden border border-stroke ${profile.avatarType}`}>
-                    {image.avatar ? (
+                    {profile.avatar ? (
                         <Image
                             width={96}
                             height={96}
-                            src={image.avatar}
+                            src={profile.avatar}
                             alt="Avatar Preview"
                             className="object-cover min-w-24 min-h-24 max-w-24 max-h-24"
                         />
@@ -133,8 +133,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, userna
                             ))}
                             <button
                                 onClick={() => handleReset('avatar')}
-                                className={`flex-1 px-4 py-2 bg-container rounded-lg border border-stroke ${image.avatar ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
-                                disabled={!image.avatar}
+                                className={`flex-1 px-4 py-2 bg-container rounded-lg border border-stroke ${profile.avatar ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                                disabled={!profile.avatar}
                             >
                                 Remove
                             </button>
@@ -163,8 +163,8 @@ const ProfileForm = ({ image, setImage, profile, setProfile, avatarTypes, userna
 
                     <button
                         onClick={() => handleReset('cover')}
-                        className={`flex-1  px-4 py-2 bg-container rounded-lg border border-stroke ${image.cover ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
-                        disabled={!image.cover}
+                        className={`flex-1  px-4 py-2 bg-container rounded-lg border border-stroke ${profile.cover ? 'text-text' : 'text-subtext cursor-not-allowed'}`}
+                        disabled={!profile.cover}
                     >
                         Remove
                     </button>
