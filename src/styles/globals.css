@@ -66,7 +66,7 @@ html {
     @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
   }
   .form-input{
-    @apply w-full rounded-md bg-container !border-stroke focus:!border-none focus:!outline-none focus:!ring-slate-500 !ring-slate-500
+    @apply w-full rounded-md bg-container border-stroke focus:!border-none focus:!outline-none focus:!ring-slate-500 !ring-slate-500
   }
   .box-shadow-none{
     box-shadow: none !important;
