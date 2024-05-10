@@ -3,7 +3,7 @@ import React from 'react'
 
 const Preview = ({ image, profile, links, customBtn }) => {
     return (
-        <div className="flex align-middle justify-center rounded-[1.5rem] relative ">
+        <div className="flex align-middle justify-center rounded-[1.5rem] relative mt-6">
             <div className="h-[64px] w-1 bg-slate-800 dark:bg-slate-700 absolute -right-1 top-[142px] rounded-e-lg"></div>
             <div className="h-[42px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[124px] rounded-s-lg"></div>
             <div className="h-[42px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[172px] rounded-s-lg"></div>
