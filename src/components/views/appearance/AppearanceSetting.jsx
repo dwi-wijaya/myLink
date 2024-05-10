@@ -90,7 +90,7 @@ const AppearanceSetting = () => {
                     <Buttons styles={buttonStyles} customBtn={customBtn} setCustomBtn={setCustomBtn} />
                 </Legend>
 
-                <button disabled={Loading} onClick={handleSave} className='btn mt-6 mb-0 sm:mb-12'>
+                <button disabled={Loading || usernameErr} onClick={handleSave} className={`btn mt-6 mb-0 sm:mb-12 ${Loading || usernameErr ? 'cursor-not-allowed' : ''}`}>
                     {Loading ? (<> <i className="bx bx-loader bx-spin" /> Loading...</>) :
                         (<><i className="bx bx-check-circle"></i>Save </>)}
                 </button>
