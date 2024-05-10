@@ -24,7 +24,7 @@ export  const AuthStateChangeProvicer = ({children}) => {
     }, [])
 
     if(isLoading){
-        return <i className='flex justify-center items-center h-[100vh] text-subtext text-3xl bx bx-loader-alt bx-spin' ></i>
+        return <div className='flex justify-center items-center h-[100vh]'><i className=' text-subtext text-3xl bx bx-loader-alt bx-spin' ></i></div>
     }
     
     return children
