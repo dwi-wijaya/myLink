@@ -8,8 +8,8 @@ const Profile = ({ data }) => {
                 <div className="h-[72px] w-1 bg-slate-800 dark:bg-slate-700 absolute -right-1 top-[200px] rounded-e-lg"></div>
                 <div className="h-[48px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[180px] rounded-s-lg"></div>
                 <div className="h-[48px] w-1 bg-slate-800 dark:bg-slate-700 absolute -left-1 top-[240px] rounded-s-lg"></div>
-                <div className="h-full sm:h-auto w-full sm:w-[300px]  overflow-y-auto scrollbar-hide relative">
-                    <div className="h-full sm:h-auto ratio-mobile sm:bg-container sm:rounded-[1.5rem] sm:text-center sm:border-[0.75rem] sm:border-slate-800 dark:border-slate-700">
+                <div className="h-full sm:h-auto w-full sm:w-[300px] ">
+                    <div className="h-full sm:h-auto ratio-mobile sm:bg-container sm:rounded-[1.5rem] sm:text-center sm:border-[0.75rem] sm:border-slate-800 dark:border-slate-700  overflow-y-auto scrollbar-hide relative">
 
                         <div className="relative h-full">
                             <div className={`absolute top-0 w-full h-40 bg-slate-200 dark:bg-slate-500 rounded-t-xl `}>
