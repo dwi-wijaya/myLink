@@ -54,8 +54,9 @@ html {
   .btn {
     @apply p-3 leading-4 justify-center rounded-md shadow-sm bg-slate-700 dark:bg-slate-200 text-slate-300 hover:text-slate-50 dark:text-slate-700 dark:hover:text-slate-900 flex gap-2 items-center font-normal w-full transition-3s
   }
-  .btn-base{
-    @apply py-4  px-6 leading-4 justify-center h-8 w-full flex items-center 
+
+  .btn-base {
+    @apply py-4 px-6 leading-4 justify-center h-8 w-full flex items-center
   }
 
   .hr {
@@ -65,28 +66,37 @@ html {
   .badge {
     @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
   }
+
   .form-input{
     @apply w-full rounded-md bg-container border-stroke focus:!border-none focus:!outline-none focus:!ring-slate-500 !ring-slate-500
   }
-  .box-shadow-none{
+
+  .box-shadow-none {
     box-shadow: none !important;
   }
-  .scrollbar-thin{
+
+  .scrollbar-thin {
     scrollbar-width: thin;
   }
+
   .grid-tc-minmax-90 {
     grid-template-columns: minmax(0, 95%);
   }
-  .grid-content{
+
+  .grid-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1rem;
   }
 }
-.phone{
-  aspect-ratio: 9/18;
+
+@media (min-width: 640px) {
+  .phone {
+    aspect-ratio: 9/18;
+  }
 }
-*{
+
+* {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
