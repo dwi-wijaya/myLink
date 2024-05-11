@@ -3,7 +3,6 @@ import { SortableContext, arrayMove, sortableKeyboardCoordinates, verticalListSo
 import React, { useState } from 'react'
 import LinkComponent from './LinkComponent';
 import { motion, AnimatePresence } from "framer-motion";
-import { v4 } from 'uuid';
 
 const LinkForm = ({ links, setLinks }) => {
 
@@ -54,7 +53,7 @@ const LinkForm = ({ links, setLinks }) => {
         <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
             <AnimatePresence>
                 <motion.div
-                    key={v4()}
+                    key={0}
                     initial={false}
                     animate={showForm ? "open" : "closed"}
                     className={`link-form ${showForm ? 'link-form-visible' : 'link-form-hidden'}`}
@@ -62,7 +61,7 @@ const LinkForm = ({ links, setLinks }) => {
 
                     {!showForm &&
                         <motion.button
-                            key={v4()}
+                            key={1}
                             initial={{ opacity: 0, }}
                             animate={{ opacity: 1, }}
                             exit={{ opacity: 0, scale: 0 }}
@@ -75,7 +74,7 @@ const LinkForm = ({ links, setLinks }) => {
                     }
 
                     <motion.div
-                        key={v4()}
+                        key={2}
                         variants={{
                             open: {
                                 clipPath: "inset(0% 0% 0% 0% round 6px)",
