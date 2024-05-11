@@ -44,7 +44,7 @@ const Profile = ({ data }) => {
                                     </div>
                                     <div className="my-5">
                                         <p className='text-xl font-semibold text-center'>{data.profile.title}</p>
-                                        <p className='text-sm'>{data.profile.bio}</p>
+                                        <p className='text-sm text-center'>{data.profile.bio}</p>
                                     </div>
                                     <hr className='hr' />
                                     <div className="mb-8">
