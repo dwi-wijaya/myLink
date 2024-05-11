@@ -7,6 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const LinkForm = ({ links, setLinks }) => {
 
     const [showForm, setShowform] = useState(false);
+    const [linkForm, setLinkForm] = useState({
+        title: '',
+        url: '',
+        id: links.length + 1
+    })
 
     const getLinkPos = id => links.findIndex(link =>
         link.id == id)
@@ -25,6 +30,15 @@ const LinkForm = ({ links, setLinks }) => {
         })
     }
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setLinkForm({
+            ...linkForm,
+            [name]: value,
+        });
+    };
+
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(TouchSensor),
@@ -36,13 +50,13 @@ const LinkForm = ({ links, setLinks }) => {
     const addLink = (event) => {
         event.preventDefault(); // Untuk mencegah pengiriman form
 
-        const title = event.target.elements.title.value; // Ambil nilai dari input title
-        const url = event.target.elements.url.value; // Ambil nilai dari input url
-
-        if (title && url) { // Pastikan title dan url tidak kosong
-            setLinks(links => [...links, { id: links.length + 1, title, url }]);
-            setShowform(false); // Sembunyikan form setelah link ditambahkan
-        }
+        setLinks(links => [...links, linkForm]);
+        setLinkForm({
+            title: '',
+            url: '',
+            id: links.length + 1
+        })
+        setShowform(false); // Sembunyikan form setelah link ditambahkan
     }
 
     const handleDelete = (id) => {
@@ -107,8 +121,22 @@ const LinkForm = ({ links, setLinks }) => {
                         </div>
                         <div className="flex gap-2">
                             <form onSubmit={addLink}>
-                                <input type="text" required name="title" className="form-input mb-2" placeholder="Title" />
-                                <input type="url" required name="url" className="form-input mb-2" placeholder="URL" />
+                                <input
+                                    type="text"
+                                    required
+                                    onChange={handleChange}
+                                    value={linkForm.title}
+                                    name="title"
+                                    className="form-input mb-2"
+                                    placeholder="Title" />
+                                <input
+                                    type="url"
+                                    required
+                                    onChange={handleChange}
+                                    value={linkForm.url}
+                                    name="url"
+                                    className="form-input mb-2"
+                                    placeholder="URL" />
                                 <button type='submit' className='btn float-right mt-2'><i className="bx bx-link"></i> Add link</button>
                             </form>
                         </div>
