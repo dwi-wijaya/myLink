@@ -56,7 +56,7 @@ html {
   }
 
   .btn-base {
-    @apply py-4 px-6 leading-4 justify-center h-8 w-full flex items-center
+    @apply py-4 px-6 leading-4 justify-center h-8 w-full flex items-center text-center
   }
 
   .hr {
