@@ -90,8 +90,11 @@ html {
   }
 }
 
+.phone {
+  aspect-ratio: 9/18;
+}
 @media (min-width: 640px) {
-  .phone {
+  .ratio-mobile {
     aspect-ratio: 9/18;
   }
 }
