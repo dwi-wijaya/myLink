@@ -11,6 +11,7 @@ const Home = () => {
   const user = useUser();
   return (
     <Container>
+      <NextSeo title={`myLink`} />
       <ThemeToggle />
       <SignoutToggle />
       <AppearanceSetting />
