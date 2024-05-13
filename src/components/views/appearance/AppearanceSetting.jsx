@@ -65,7 +65,7 @@ const AppearanceSetting = () => {
         <div className='flex flex-col sm:flex-row justify-between gap-y-8'>
             
             <div className="appearance-setting w-full sm:overflow-x-hidden h-full  sm:!h-[100vh] px-4 sm:!px-[2.5%] scrollbar-hide border-r-0 sm:!border-r border-stroke min-w-[355px]">
-                <Legend title="Your myLink" className="mt-20 sm:mt-12">
+                <Legend title="Your Link" className="mt-20 sm:mt-12">
                     <div className="flex justify-between items-center gap-3">
                         <div className="flex-1 bg-container leading-4 p-3 border border-stroke rounded-md flex items-center gap-3 line-clamp-1">
                             <a target='_blank' href={myLinkUrl}><p className='line-clamp-1 break-all'>{myLinkUrl}</p></a>
