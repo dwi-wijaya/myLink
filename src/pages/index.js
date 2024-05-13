@@ -6,6 +6,7 @@ import WithProtected from "@/hoc/withProtected";
 const inter = Inter({ subsets: ["latin"] });
 import SignoutToggle from "@/components/toggles/SignoutToggle";
 import ThemeToggle from "@/components/toggles/ThemeToggle";
+import { NextSeo } from "next-seo";
 
 const Home = () => {
   const user = useUser();
