@@ -27,9 +27,6 @@
     "react-hook-form": "^7.51.2",
     "react-hot-toast": "^2.4.1",
     "react-loading-skeleton": "^3.3.1",
-    "react-select": "^5.8.0",
-    "react-topbar-progress-indicator": "^4.1.1",
-    "simple-line-icons": "^2.5.5",
     "swr": "^2.2.5",
     "tailwind-scrollbar-hide": "^1.1.7",
     "uuid": "^9.0.1"

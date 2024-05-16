@@ -6,9 +6,9 @@ const WithProtected = (Pages) => {
     return (props) => {
         const router = useRouter();
         const user = useUser();
-        const { uuid } = user;
-        
-        if (!uuid) {
+        const { uid } = user;
+
+        if (!uid) {
             router.replace('/signin');
             return <></>
         }

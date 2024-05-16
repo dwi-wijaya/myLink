@@ -4,18 +4,16 @@ import { getFile } from "../fileHandler";
 
 const db = getFirestore(firebase_app);
 
-export default async function getDocument(collectionName, id, useFile = false, fileField = null, bySlug = false) {
+export default async function getDocument(collectionName, id, useFile = '', slug = '') {
     let result = [];
     let error = null;
     try {
-        if (bySlug) {
-            const q = query(collection(db, collectionName), where('slug', '==', id));
+        if (slug) {
+            const q = query(collection(db, collectionName), where(slug, '==', id));
             const querySnapshot = await getDocs(q);
 
-            result = querySnapshot.docs.map((doc) => doc.data())[0];
-            if (!result) {
-                throw new Error("Document not found");
-            }
+            result = querySnapshot.docs.map((doc) => doc.data())[0] ?? [];
+            
             
         } else {
             const docRef = doc(db, collectionName, id);
@@ -27,7 +25,7 @@ export default async function getDocument(collectionName, id, useFile = false, f
             }
         }
         if (useFile) {
-            result[fileField] = await getFile(result[fileField])
+            result[useFile] = await getFile(result[useFile])
         }
     } catch (e) {
         error = e;

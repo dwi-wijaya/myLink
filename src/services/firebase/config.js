@@ -4,11 +4,15 @@ import { getStorage } from 'firebase/storage'
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  getAdditionalUserInfo,
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut
 } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { INITIAL_USER_DATA } from "@/constants/initial-user";
+import { v4 } from "uuid";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -33,20 +37,41 @@ export const SignIn = async (email, password) => {
   await signInWithEmailAndPassword(FirebaseAuth, email, password)
 }
 export const CreateUser = async (email, password) => {
-  await createUserWithEmailAndPassword(FirebaseAuth, email, password)
+  const result = await createUserWithEmailAndPassword(FirebaseAuth, email, password)
+  const { isNewUser } = getAdditionalUserInfo(result)
+  if (isNewUser) {
+    const db = getFirestore(firebase_app)
+    const uid = result.user.uid
+    const data = INITIAL_USER_DATA
+    
+    data.uid = result.user.uid
+    data.email = result.user.email
+    data.timestamp = Date.now()
+
+    await setDoc(doc(db, 'links', uid), data, {
+      merge: true,
+    });
+  }
 }
 
 export const GoogleSignIn = async () => {
   const provider = new GoogleAuthProvider();
 
-  const result = await signInWithPopup(getAuth(), provider);
-
-  // If the account doesn't exist, create it
-  console.log(result.user);
-  if (result.additionalUserInfo.isNewUser) {
-    // const { email } = result.user;
-    // Use the email as the password for simplicity
-    // await createUserWithEmailAndPassword(getAuth(), email, email);
+  const result = await signInWithPopup(getAuth(), provider)
+  const { isNewUser } = getAdditionalUserInfo(result)
+  if (isNewUser) {
+    const db = getFirestore(firebase_app)
+    const uid = result.user.uid
+    const data = INITIAL_USER_DATA
+    
+    data.uid = result.user.uid
+    data.email = result.user.email
+    data.timestamp = Date.now()
+    data.profile.avatar = result.user.photoURL
+    
+    await setDoc(doc(db, 'links', uid), data, {
+      merge: true,
+    });
   }
 }
 

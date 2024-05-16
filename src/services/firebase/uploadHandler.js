@@ -20,7 +20,6 @@ export async function uploadHandler(dir, file) {
         
         success = true;
     } catch (e) {
-        console.log(e);
         success = false;
         error = e.message;
     }

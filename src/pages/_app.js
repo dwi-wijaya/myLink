@@ -1,7 +1,6 @@
 import Overlay from "@/components/layout/Overlay";
 import Sidebar from "@/components/layout/Sidebar";
-import SignoutToggle from "@/components/toggles/SignoutToggle";
-import ThemeToggle from "@/components/toggles/ThemeToggle";
+
 import { AuthStateChangeProvicer } from "@/context/auth";
 import { UserProvider } from "@/context/user";
 import "@/styles/globals.css";
@@ -25,8 +24,7 @@ export default function App({ Component, pageProps }) {
       <UserProvider>
         <AuthStateChangeProvicer>
           <ProgressBar />
-          <ThemeToggle />
-          <SignoutToggle/>
+          
           <Toaster
             toastOptions={{
               style: {

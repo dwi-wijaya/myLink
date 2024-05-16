@@ -7,6 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const LinkForm = ({ links, setLinks }) => {
 
     const [showForm, setShowform] = useState(false);
+    const [linkForm, setLinkForm] = useState({
+        title: '',
+        url: '',
+        id: links.length + 1
+    })
 
     const getLinkPos = id => links.findIndex(link =>
         link.id == id)
@@ -25,6 +30,15 @@ const LinkForm = ({ links, setLinks }) => {
         })
     }
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setLinkForm({
+            ...linkForm,
+            [name]: value,
+        });
+    };
+
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(TouchSensor),
@@ -36,13 +50,13 @@ const LinkForm = ({ links, setLinks }) => {
     const addLink = (event) => {
         event.preventDefault(); // Untuk mencegah pengiriman form
 
-        const title = event.target.elements.title.value; // Ambil nilai dari input title
-        const url = event.target.elements.url.value; // Ambil nilai dari input url
-
-        if (title && url) { // Pastikan title dan url tidak kosong
-            setLinks(links => [...links, { id: links.length + 1, title, url }]);
-            setShowform(false); // Sembunyikan form setelah link ditambahkan
-        }
+        setLinks(links => [...links, linkForm]);
+        setLinkForm({
+            title: '',
+            url: '',
+            id: links.length + 1
+        })
+        setShowform(false); // Sembunyikan form setelah link ditambahkan
     }
 
     const handleDelete = (id) => {
@@ -53,22 +67,28 @@ const LinkForm = ({ links, setLinks }) => {
         <DndContext sensors={sensors} onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
             <AnimatePresence>
                 <motion.div
+                    key={0}
                     initial={false}
                     animate={showForm ? "open" : "closed"}
                     className={`link-form ${showForm ? 'link-form-visible' : 'link-form-hidden'}`}
                 >
 
-                    {!showForm && <motion.button
-                        initial={{ opacity: 0, }}
-                        animate={{ opacity: 1, }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
-                        onClick={() => setShowform(!showForm)} className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full'
-                    >
-                        <i className="bx bx-link"></i> Add link
-                    </motion.button>}
+                    {!showForm &&
+                        <motion.button
+                            key={1}
+                            initial={{ opacity: 0, }}
+                            animate={{ opacity: 1, }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            whileTap={{ scale: 0.90, transition: { duration: 0.1 } }}
+                            onClick={() => setShowform(!showForm)}
+                            className='btn !bg-container !text-slate-500 border-stroke border mb-4 !w-full hover:!bg-gray-700 hover:!text-slate-200 dark:hover:!bg-slate-200 dark:hover:!text-slate-600'
+                        >
+                            <i className="bx bx-link"></i> Add link
+                        </motion.button>
+                    }
 
                     <motion.div
+                        key={2}
                         variants={{
                             open: {
                                 clipPath: "inset(0% 0% 0% 0% round 6px)",
@@ -101,20 +121,37 @@ const LinkForm = ({ links, setLinks }) => {
                         </div>
                         <div className="flex gap-2">
                             <form onSubmit={addLink}>
-                                <input type="text" required name="title" className="form-input mb-2" placeholder="Title" />
-                                <input type="url" required name="url" className="form-input mb-2" placeholder="URL" />
+                                <input
+                                    type="text"
+                                    required
+                                    onChange={handleChange}
+                                    value={linkForm.title}
+                                    name="title"
+                                    className="form-input mb-2"
+                                    placeholder="Title" />
+                                <input
+                                    type="url"
+                                    required
+                                    onChange={handleChange}
+                                    value={linkForm.url}
+                                    name="url"
+                                    className="form-input mb-2"
+                                    placeholder="URL" />
                                 <button type='submit' className='btn float-right mt-2'><i className="bx bx-link"></i> Add link</button>
                             </form>
                         </div>
                     </motion.div>
                 </motion.div>
-                <motion.div className='flex flex-col gap-y-2'>
-                    {links.length != 0 ? <SortableContext items={links} strategy={verticalListSortingStrategy}>
-                        {links.map((link, index) => (
-                            <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
-                        ))}
-                    </SortableContext> : <h3 className='font-semibold text-center'>Oops! Looks like there are no links here</h3>}
-                </motion.div>
+                <div className='flex flex-col gap-y-2'>
+                    {links.length != 0 ?
+                        <SortableContext items={links} strategy={verticalListSortingStrategy}>
+                            {links.map((link, index) => (
+                                <LinkComponent id={link.id} title={link.title} url={link.url} handleDelete={handleDelete} links={links} setLinks={setLinks} key={link.id} />
+                            ))}
+                        </SortableContext> :
+                        <h3 className='font-semibold text-center'>Oops! Looks like there are no links here</h3>
+                    }
+                </div>
             </AnimatePresence>
         </DndContext>
     );

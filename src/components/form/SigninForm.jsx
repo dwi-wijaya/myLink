@@ -75,9 +75,9 @@ const SigninForm = () => {
                             </button>
                         <p className='text-sm text-subtext my-4'>Dont Have Account yet? <Link href="/signup"><b>Sign-up</b></Link></p> 
                         {/* <Divider plain>OR</Divider> */}
-                            <button className="btn !bg-transparent !w-full !text-base !border-slate-500" onClick={handleGoogle}>
+                            <button className="btn !bg-transparent !w-full !text-base border border-slate-500" onClick={handleGoogle}>
                                 {GoogleLoading && <i className="bx bx-loader bx-spin"></i>}
-                                {GoogleLoading ? "Signing  ..." : <div className='flex gap-3 items-center !text-text'><Image className='size-4' src={GoogleLogo}></Image>Continue with Google</div>}
+                                {GoogleLoading ? "Signing  ..." : <div className='flex gap-3 items-center !text-text'><Image  className='size-4' src={GoogleLogo}></Image>Continue with Google</div>}
                             </button>
                     </form>
                     <hr className="hr" />
