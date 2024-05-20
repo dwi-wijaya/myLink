@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+        <link rel="icon"  href="/favicon/icon.png" sizes="any"/>
       </Head>
       <body>
         <Main />
